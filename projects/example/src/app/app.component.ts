@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MiaFinder, MiaFinderModalService } from 'projects/agencycoda/mia-finder/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'example';
+
+  constructor(
+    protected finderModalService: MiaFinderModalService
+  ) {
+
+  }
+
+  onClickNewFolder() {
+    this.finderModalService.newFolder(new MiaFinder());
+  }
 }
