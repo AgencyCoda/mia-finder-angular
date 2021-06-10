@@ -1,6 +1,14 @@
+/** Angular Core Libraries */
 import { NgModule } from '@angular/core';
-import { MiaFinderComponent } from './mia-finder.component';
 
+/** MIA Libraries */
+import { MiaCoreModule } from '@agencycoda/mia-core';
+import { MiaFormModule } from '@agencycoda/mia-form';
+import { MiaLoadingModule } from '@agencycoda/mia-loading';
+
+/** Components */
+import { MiaFinderComponent } from './mia-finder.component';
+import { MiaTableModule } from '@agencycoda/mia-table';
 
 
 @NgModule({
@@ -8,6 +16,10 @@ import { MiaFinderComponent } from './mia-finder.component';
     MiaFinderComponent
   ],
   imports: [
+    MiaCoreModule,
+    MiaLoadingModule,
+    MiaFormModule,
+    MiaTableModule
   ],
   exports: [
     MiaFinderComponent
