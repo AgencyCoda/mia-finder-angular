@@ -10,12 +10,16 @@ export class AppComponent {
   title = 'example';
 
   constructor(
-    protected finderModalService: MiaFinderModalService
+    protected finderModalService: MiaFinderModalService,
   ) {
 
   }
 
   onClickNewFolder() {
     this.finderModalService.newFolder(new MiaFinder());
+  }
+
+  onClickNewFileLink() {
+    this.finderModalService.newFileLink(new MiaFinder());
   }
 }
