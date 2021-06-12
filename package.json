@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@agencycoda/mia-auth": "^11.0.26",
-    "@agencycoda/mia-core": "^11.0.23",
+    "@agencycoda/mia-core": "^11.0.24",
     "@agencycoda/mia-form": "^0.0.30",
     "@agencycoda/mia-loading": "^0.0.3",
     "@agencycoda/mia-table": "^0.0.24",

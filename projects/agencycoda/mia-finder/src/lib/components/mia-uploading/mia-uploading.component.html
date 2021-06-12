@@ -1,0 +1,35 @@
+<div *ngIf="isActive" class="is-uploading-component" [ngClass]="{'is-uploading-component-closed': isCollapse}" cdkDrag>
+    <div class="header" cdkDragHandle>
+        <span> Uploading {{ files.length }} files </span>
+        <button mat-icon-button (click)="isCollapse = !isCollapse">
+            <mat-icon *ngIf="!isCollapse">expand_more</mat-icon>
+            <mat-icon *ngIf="isCollapse">expand_less</mat-icon>
+        </button>
+        <button mat-icon-button (click)="isActive = false"> <mat-icon>close</mat-icon> </button>
+    </div>
+    <div class="body">
+        <div class="file animated" *ngFor="let file of files" [ngClass]="{'file-completed': file.status == 1, 'file-wrong': file.status == 2}">
+            <div class="drive-icon icon-doc">
+                <!--<img *ngIf="file.image != '' || file.image == undefined || file.image == null || !!file.image"
+                     [src]="file.image"
+                     [hidden]="!file.image"
+                     onError="this.onerror=null;this.src='/assets/img/image-not-found.png';"
+                     />-->
+            </div>
+            <div class="progress">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <div class="name"> {{ file.title }} </div>
+                    <div class="size"> {{ bytesToString(file.size) }} </div>
+                </div>
+                <mat-progress-bar mode="determinate" [value]="file.uploadProgress"></mat-progress-bar>
+            </div>
+            <div class="status">
+                <div *ngIf="file.uploadStatus == 0" class="item uploading"></div>
+                <div *ngIf="file.uploadStatus == 1" class="item success"><mat-icon>check</mat-icon></div>
+                <div *ngIf="file.uploadStatus == 2" class="item wrong">
+                    <button mat-icon-button matTooltip="Again" matTooltipClass="tooltip-styles" (click)="retryUpload(file)"><mat-icon>restore</mat-icon></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

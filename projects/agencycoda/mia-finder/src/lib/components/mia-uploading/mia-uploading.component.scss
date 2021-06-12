@@ -1,0 +1,74 @@
+$black_high_emphasis: rgba(0, 0, 0, 0.87);
+$black_medium_emphasis: rgba(0, 0, 0, 0.6);
+$color_accent: #8BC640;
+$color_error: #FF0C3E;
+
+$box_shadow_12: 0 3px 10px -8px rgba($color: #393D63, $alpha: 0.04), 0 10px 23px 0 rgba($color: #393D63, $alpha: 0.1);
+
+.is-uploading-component{
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 20000;
+    background-color: white;
+    box-shadow: $box_shadow_12;
+    width: 320px;
+    border-radius: 12px;
+
+    .header{
+        padding: 4px 16px;
+        background-color: $black_high_emphasis;
+        color: white;
+        display: flex;
+        align-items: center;
+        span { margin-right: auto; }
+    }
+
+    .body{
+        padding: 16px;
+        .file{
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            &:last-of-type { margin-bottom: 0; }
+            .progress{
+                width: 100%;
+                .name { color: $black_high_emphasis; font-size: 14px; }
+                .size { font-size: 11px; color: $black_medium_emphasis; }
+                &::ng-deep .mat-progress-bar-buffer { background-color: #DADEE3 !important; }
+            }
+
+            .status{
+                .item{
+                    margin-left: 12px;
+                    width: 32px;
+                    min-width: 32px;
+                    max-width: 32px;
+                    height: 32px;
+                    min-height: 32px;
+                    max-height: 32px;
+                    border-radius: 200px;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .success { color: $color_accent; }
+                .wrong { color: $color_error; }
+            }
+        }
+
+        .file-completed{
+            &::ng-deep .mat-progress-bar-fill { &::after { background-color: $color_accent !important; } }
+        }
+        .file-wrong{
+            .progress { .name { color: $color_error; } }
+            &::ng-deep .mat-progress-bar-fill { &::after { background-color: $color_error !important; } }
+        }
+    }
+}
+
+.is-uploading-component-closed{
+    height: 48px;
+    overflow: hidden;
+}

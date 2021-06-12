@@ -1,8 +1,12 @@
 /** Angular Core Libraries */
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 /** Angular Material Libraries */
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 
 /** MIA Libraries */
 import { MiaCoreModule } from '@agencycoda/mia-core';
@@ -13,6 +17,9 @@ import { MiaTableModule } from '@agencycoda/mia-table';
 
 /** Components */
 import { MiaFinderComponent } from './mia-finder.component';
+import { MiaUploadingComponent } from './components/mia-uploading/mia-uploading.component';
+
+
 
 
 
@@ -20,9 +27,13 @@ import { MiaFinderComponent } from './mia-finder.component';
 
 @NgModule({
   declarations: [
-    MiaFinderComponent
+    MiaFinderComponent,
+    MiaUploadingComponent
   ],
   imports: [
+    /** Angular Core */
+    CommonModule,
+
     /** Mia Libraries */
     MiaCoreModule,
     MiaAuthModule,
@@ -31,10 +42,13 @@ import { MiaFinderComponent } from './mia-finder.component';
     MiaTableModule,
 
     /** Angular Material */
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule,
+    MatProgressBarModule
   ],
   exports: [
-    MiaFinderComponent
+    MiaFinderComponent,
+    MiaUploadingComponent
   ]
 })
 export class MiaFinderModule { }

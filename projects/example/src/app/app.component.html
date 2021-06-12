@@ -2,4 +2,10 @@
 <button (click)="onClickNewFolder()">New Folder</button>
 <button (click)="onClickNewFileLink()">New File with link</button>
 <button (click)="onClickChangeName()">Change name</button>
+
+<input #inputFile type="file" (change)="onUploadEvent($event)" style="display: none;" accept="image/png, image/jpeg" />
+<button (click)="inputFile.click();">Upload file</button>
+
 <router-outlet></router-outlet>
+
+<mia-uploading></mia-uploading>

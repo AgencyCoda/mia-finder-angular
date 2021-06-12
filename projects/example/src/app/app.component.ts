@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MiaFinder, MiaFinderModalService } from 'projects/agencycoda/mia-finder/src/public-api';
+import { MiaFinder, MiaFinderModalService, MiaFinderService } from 'projects/agencycoda/mia-finder/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +11,13 @@ export class AppComponent {
 
   constructor(
     protected finderModalService: MiaFinderModalService,
+    protected miaFinderService: MiaFinderService
   ) {
 
+  }
+
+  onUploadEvent($event: any) {
+    this.miaFinderService.uploadFiles($event.target.files);
   }
 
   onClickNewFolder() {

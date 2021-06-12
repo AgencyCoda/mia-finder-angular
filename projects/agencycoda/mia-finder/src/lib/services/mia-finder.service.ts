@@ -32,17 +32,30 @@ export class MiaFinderService {
     item.size = file.size;
     item.uploadStatus = MiaFinder.UPLOAD_STATUS_IN_PROGRESS;
     item.uploadProgress = 0;
+    item.uploadMemory = file;
 
     this.storageService.uploadWithProgressDirect(file).subscribe(data => {
       if (data.type == HttpEventType.UploadProgress) {
         item.uploadProgress = Math.round((100 / data.total) * data.loaded);
       } else if (data.type == HttpEventType.Response) {
+        item.uploadMemory = undefined;
         item.url = 'https://storage.googleapis.com/' + this.config.bucket + '/' + data.name;
         this.save(item);
       }
     }, error => {
+      item.uploadMemory = file;
       item.uploadStatus = MiaFinder.UPLOAD_STATUS_ERROR;
     });
+
+    this.uploading.next(item);
+  }
+
+  retryUpload(finder: MiaFinder) {
+    if(finder.uploadMemory != undefined){
+      this.upload(finder.uploadMemory, finder.parent_id);
+    } else {
+      this.save(finder);
+    }
   }
 
   save(finder: MiaFinder) {

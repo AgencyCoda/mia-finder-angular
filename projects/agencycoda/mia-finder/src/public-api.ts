@@ -11,6 +11,7 @@ export * from './lib/entities/mia-finder';
  * Components
  */
 export * from './lib/mia-finder.component';
+export * from './lib/components/mia-uploading/mia-uploading.component';
 
 /*
  * Services
