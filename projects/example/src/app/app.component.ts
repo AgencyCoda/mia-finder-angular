@@ -22,4 +22,11 @@ export class AppComponent {
   onClickNewFileLink() {
     this.finderModalService.newFileLink(new MiaFinder());
   }
+
+  onClickChangeName() {
+    let item = new MiaFinder();
+    item.id = 1;
+    item.title = 'archiov.zip';
+    this.finderModalService.changeName(item);
+  }
 }
