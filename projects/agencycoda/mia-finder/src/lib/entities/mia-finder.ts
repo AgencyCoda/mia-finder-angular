@@ -5,6 +5,10 @@ export class MiaFinder extends MiaModel {
     static TYPE_FOLDER = 1;
     static TYPE_LINK = 2;
 
+    static UPLOAD_STATUS_IN_PROGRESS = 0;
+    static UPLOAD_STATUS_SUCCESS = 1;
+    static UPLOAD_STATUS_ERROR = 2;
+
     id: number = 0;
     creator_id: number = 0;
     title = '';
@@ -19,4 +23,7 @@ export class MiaFinder extends MiaModel {
     block_user_id?: number;
     type_extra = 0;
     created_at = '';
+
+    uploadProgress? = 0;
+    uploadStatus? = 0;
 }

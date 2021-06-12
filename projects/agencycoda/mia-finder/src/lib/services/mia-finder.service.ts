@@ -1,0 +1,58 @@
+import { GoogleStorageService, MiaGoogleStorage, MIA_GOOGLE_STORAGE_PROVIDER } from '@agencycoda/mia-core';
+import { HttpEventType } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { MiaFinder } from '../entities/mia-finder';
+import { MiaFinderHttpService } from './mia-finder-http.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MiaFinderService {
+
+  uploading = new Subject<MiaFinder>();
+  uploadCompleted = new Subject<MiaFinder>();
+
+  constructor(
+    @Inject(MIA_GOOGLE_STORAGE_PROVIDER) protected config: MiaGoogleStorage,
+    protected finderHttpService: MiaFinderHttpService,
+    protected storageService: GoogleStorageService
+  ) { }
+
+  uploadFiles(files: Array<File>, parentId?: number) {
+    for (const file of files) {
+      this.upload(file, parentId);
+    }
+  }
+
+  upload(file: File, parentId?: number) {
+    let item = new MiaFinder();
+    item.parent_id = parentId;
+    item.title = file.name;
+    item.size = file.size;
+    item.uploadStatus = MiaFinder.UPLOAD_STATUS_IN_PROGRESS;
+    item.uploadProgress = 0;
+
+    this.storageService.uploadWithProgressDirect(file).subscribe(data => {
+      if (data.type == HttpEventType.UploadProgress) {
+        item.uploadProgress = Math.round((100 / data.total) * data.loaded);
+      } else if (data.type == HttpEventType.Response) {
+        item.url = 'https://storage.googleapis.com/' + this.config.bucket + '/' + data.name;
+        this.save(item);
+      }
+    }, error => {
+      item.uploadStatus = MiaFinder.UPLOAD_STATUS_ERROR;
+    });
+  }
+
+  save(finder: MiaFinder) {
+    this.finderHttpService.save(finder).then(result => {
+      finder.id = result.id;
+      finder.uploadProgress = MiaFinder.UPLOAD_STATUS_SUCCESS;
+
+      this.uploadCompleted.next(finder);
+    }).catch(error => {
+      finder.uploadStatus = MiaFinder.UPLOAD_STATUS_ERROR;
+    });
+  }
+}
