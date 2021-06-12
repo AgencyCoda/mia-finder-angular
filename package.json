@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build2": "ng build --prod && cd dist/agencycoda/mia-core/ && npm publish"
+    "build2": "ng build --prod && cd dist/agencycoda/mia-finder/ && npm publish"
   },
   "private": true,
   "dependencies": {
