@@ -41,4 +41,9 @@ export class MiaFinderHttpService extends MiaBaseCrudHttpService<MiaFinder> {
   listOb(query: MiaQuery): Observable<MiaPagination<MiaFinder>> {
     return this.postOb(this.config.baseUrl + '/mia-finder/list-items', query.toParams());
   }
+
+  listWithExtras(query: MiaQuery, moreParams: any): Promise<MiaPagination<MiaFinder>> {
+    let data = {...query.toParams(), ...moreParams};
+    return this.post(this.config.baseUrl + '/mia-finder/list-items', data);
+  }
 }

@@ -19,6 +19,9 @@ import { MiaTableModule } from '@agencycoda/mia-table';
 import { MiaFinderComponent } from './mia-finder.component';
 import { MiaUploadingComponent } from './components/mia-uploading/mia-uploading.component';
 import { MiaBreadcrumbComponent } from './components/mia-breadcrumb/mia-breadcrumb.component';
+import { MiaFinderTableComponent } from './components/mia-finder-table/mia-finder-table.component';
+import { FileColumnComponent } from './columns/file-column/file-column.component';
+import { SizeColumnComponent } from './columns/size-column/size-column.component';
 
 
 
@@ -30,7 +33,10 @@ import { MiaBreadcrumbComponent } from './components/mia-breadcrumb/mia-breadcru
   declarations: [
     MiaFinderComponent,
     MiaUploadingComponent,
-    MiaBreadcrumbComponent
+    MiaBreadcrumbComponent,
+    MiaFinderTableComponent,
+    FileColumnComponent,
+    SizeColumnComponent
   ],
   imports: [
     /** Angular Core */
@@ -51,7 +57,8 @@ import { MiaBreadcrumbComponent } from './components/mia-breadcrumb/mia-breadcru
   exports: [
     MiaFinderComponent,
     MiaUploadingComponent,
-    MiaBreadcrumbComponent
+    MiaBreadcrumbComponent,
+    MiaFinderTableComponent
   ]
 })
 export class MiaFinderModule { }

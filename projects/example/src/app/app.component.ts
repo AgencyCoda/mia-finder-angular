@@ -1,15 +1,18 @@
 
-import { Component, OnInit } from '@angular/core';
-import { MiaFinder, MiaFinderHttpService, MiaFinderModalService, MiaFinderService } from 'projects/agencycoda/mia-finder/src/public-api';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MiaFinder, MiaFinderHttpService, MiaFinderModalService, MiaFinderService, MiaFinderTableComponent, MiaFinderTableConfig } from 'projects/agencycoda/mia-finder/src/public-api';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   
+  @ViewChild('tableComp') tableComp!: MiaFinderTableComponent;
+
   finderSelected?: MiaFinder;
+  tableConfig: MiaFinderTableConfig = new MiaFinderTableConfig();
 
   constructor(
     protected finderHttpService: MiaFinderHttpService,
@@ -20,6 +23,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
+  }
+
+  ngAfterViewInit(): void {
     this.loadExample(4);
   }
 
@@ -27,11 +34,28 @@ export class AppComponent implements OnInit {
     this.loadExample(item.id);
   }
 
+  onClickItem(result: { key: string; item: MiaFinder; }) {
+    console.log(result);
+    if(result.key == 'click-row' && result.item.type == MiaFinder.TYPE_FOLDER){
+      this.loadExample(result.item.id);
+    }
+  }
+
   loadExample(finderId: number) {
     this.finderSelected = undefined;
     this.finderHttpService.fetch(finderId).then(result => {
       this.finderSelected = result;
+      this.loadItems();
     });
+  }
+
+  loadItems() {
+    this.tableConfig.query.resetWhere();
+    this.tableConfig.query.addWhere('parent_id', this.finderSelected!.id);
+    if(this.tableComp == undefined){
+      return;
+    }
+    this.tableComp.loadItems();
   }
 
   onUploadEvent($event: any) {
