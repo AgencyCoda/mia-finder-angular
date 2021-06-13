@@ -1,4 +1,7 @@
 <h1>Mia Finder Example!</h1>
+
+<mia-breadcrumb *ngIf="finderSelected" [finder]="finderSelected" (clickFolder)="onClickFolder($event)"></mia-breadcrumb>
+
 <button (click)="onClickNewFolder()">New Folder</button>
 <button (click)="onClickNewFileLink()">New File with link</button>
 <button (click)="onClickChangeName()">Change name</button>

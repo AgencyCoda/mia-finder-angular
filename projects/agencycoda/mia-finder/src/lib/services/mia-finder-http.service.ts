@@ -17,6 +17,14 @@ export class MiaFinderHttpService extends MiaBaseCrudHttpService<MiaFinder> {
     super(http);
     this.basePathUrl = config.baseUrl + 'mia-finder';
   }
+  
+  fetch(itemId: number): Promise<MiaFinder> {
+    return this.get(this.config.baseUrl + 'mia-finder/fetch/' + itemId);
+  }
+
+  fetchOb(itemId: number): Observable<MiaFinder> {
+    return this.getOb(this.config.baseUrl + 'mia-finder/fetch/' + itemId);
+  }
 
   save(item: MiaFinder): Promise<MiaFinder> {
     return this.post(this.config.baseUrl + 'mia-finder/upload-item', item);

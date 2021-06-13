@@ -1,0 +1,8 @@
+<div class="mia-breadcrumb-class">
+    <ng-container *ngFor="let parent of parents">
+        <a (click)="onClick(parent)">{{ parent.title }}</a>
+        <span> / </span>
+    </ng-container>
+    
+    {{ finder.title }}
+</div>

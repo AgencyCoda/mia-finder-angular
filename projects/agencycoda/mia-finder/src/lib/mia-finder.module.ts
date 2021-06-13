@@ -18,6 +18,7 @@ import { MiaTableModule } from '@agencycoda/mia-table';
 /** Components */
 import { MiaFinderComponent } from './mia-finder.component';
 import { MiaUploadingComponent } from './components/mia-uploading/mia-uploading.component';
+import { MiaBreadcrumbComponent } from './components/mia-breadcrumb/mia-breadcrumb.component';
 
 
 
@@ -28,7 +29,8 @@ import { MiaUploadingComponent } from './components/mia-uploading/mia-uploading.
 @NgModule({
   declarations: [
     MiaFinderComponent,
-    MiaUploadingComponent
+    MiaUploadingComponent,
+    MiaBreadcrumbComponent
   ],
   imports: [
     /** Angular Core */
@@ -48,7 +50,8 @@ import { MiaUploadingComponent } from './components/mia-uploading/mia-uploading.
   ],
   exports: [
     MiaFinderComponent,
-    MiaUploadingComponent
+    MiaUploadingComponent,
+    MiaBreadcrumbComponent
   ]
 })
 export class MiaFinderModule { }

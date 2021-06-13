@@ -12,6 +12,7 @@ export * from './lib/entities/mia-finder';
  */
 export * from './lib/mia-finder.component';
 export * from './lib/components/mia-uploading/mia-uploading.component';
+export * from './lib/components/mia-breadcrumb/mia-breadcrumb.component';
 
 /*
  * Services

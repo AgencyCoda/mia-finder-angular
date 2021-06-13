@@ -1,3 +1,4 @@
+import { MIA_AUTH_PROVIDER } from '@agencycoda/mia-auth';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,7 +17,14 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     MiaFinderModule
   ],
-  providers: [],
+  providers: [
+    { 
+      provide: MIA_AUTH_PROVIDER, 
+      useValue: {
+        baseUrl: 'http://localhost:8080/'
+      }
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
