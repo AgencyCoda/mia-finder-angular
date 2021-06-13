@@ -35,6 +35,10 @@ export class MiaBreadcrumbComponent implements OnInit {
   }
 
   processParent(item: MiaFinder) {
+    if(this.topId != undefined && this.topId == item.id){
+      return;
+    }
+
     this.parents.push(item);
 
     if(item.nested_parents == undefined){
