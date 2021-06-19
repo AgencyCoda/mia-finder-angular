@@ -33,6 +33,14 @@ export class MiaFinderService {
     item.uploadStatus = MiaFinder.UPLOAD_STATUS_IN_PROGRESS;
     item.uploadProgress = 0;
     item.uploadMemory = file;
+
+    if(extra != undefined && extra.item_relation_one != undefined){
+      item.item_relation_one = extra.item_relation_one;
+    }
+    if(extra != undefined && extra.item_relation_two != undefined){
+      item.item_relation_two = extra.item_relation_two;
+    }
+
     item.extra = extra;
 
     this.storageService.uploadWithProgressDirect(file).subscribe(data => {
