@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MiaFinder } from '../entities/mia-finder';
+import { MiaFinderTag } from '../entities/mia-finder-tag';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,13 @@ export class MiaFinderHttpService extends MiaBaseCrudHttpService<MiaFinder> {
   listWithExtras(query: MiaQuery, moreParams: any): Promise<MiaPagination<MiaFinder>> {
     let data = {...query.toParams(), ...moreParams};
     return this.post(this.config.baseUrl + '/mia-finder/list-items', data);
+  }
+
+  tags(query: MiaQuery): Promise<MiaPagination<MiaFinderTag>> {
+    return this.post(this.config.baseUrl + '/mia-finder/tags', query.toParams());
+  }
+
+  tagsOb(query: MiaQuery): Observable<MiaPagination<MiaFinderTag>> {
+    return this.postOb(this.config.baseUrl + '/mia-finder/tags', query.toParams());
   }
 }

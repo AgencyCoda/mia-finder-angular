@@ -9,6 +9,11 @@
 <input #inputFile type="file" (change)="onUploadEvent($event)" style="display: none;" accept="image/png, image/jpeg" />
 <button (click)="inputFile.click();">Upload file</button>
 
+<div>
+    <p>Tags:</p>
+    <p *ngFor="let tag of tags.data">{{ tag.title }}</p>
+</div>
+
 <mia-finder-table #tableComp *ngIf="finderSelected" [tableConfig]="tableConfig" (clickItem)="onClickItem($event)"></mia-finder-table>
 
 <mia-uploading></mia-uploading>

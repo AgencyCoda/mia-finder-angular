@@ -1,6 +1,7 @@
 
+import { MiaPagination, MiaQuery } from '@agencycoda/mia-core';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MiaFinder, MiaFinderHttpService, MiaFinderModalService, MiaFinderService, MiaFinderTableComponent, MiaFinderTableConfig } from 'projects/agencycoda/mia-finder/src/public-api';
+import { MiaFinder, MiaFinderHttpService, MiaFinderModalService, MiaFinderService, MiaFinderTableComponent, MiaFinderTableConfig, MiaFinderTag } from 'projects/agencycoda/mia-finder/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   finderSelected?: MiaFinder;
   tableConfig: MiaFinderTableConfig = new MiaFinderTableConfig();
 
+  tags = new MiaPagination<MiaFinderTag>();
+
   constructor(
     protected finderHttpService: MiaFinderHttpService,
     protected finderModalService: MiaFinderModalService,
@@ -23,7 +26,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    
+    this.loadTags();
   }
 
   ngAfterViewInit(): void {
@@ -75,5 +78,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     item.id = 1;
     item.title = 'archiov.zip';
     this.finderModalService.changeName(item);
+  }
+
+  loadTags() {
+    this.finderHttpService.tags(new MiaQuery()).then(result => this.tags = result);
   }
 }

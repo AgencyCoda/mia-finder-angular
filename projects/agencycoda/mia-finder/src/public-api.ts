@@ -6,6 +6,7 @@
  * Entities
  */
 export * from './lib/entities/mia-finder';
+export * from './lib/entities/mia-finder-tag';
 
 /*
  * Components
