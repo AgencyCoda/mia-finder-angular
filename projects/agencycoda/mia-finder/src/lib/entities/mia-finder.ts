@@ -29,4 +29,6 @@ export class MiaFinder extends MiaModel {
     uploadMemory?: File;
 
     nested_parents?: MiaFinder;
+
+    extra?: any;
 }

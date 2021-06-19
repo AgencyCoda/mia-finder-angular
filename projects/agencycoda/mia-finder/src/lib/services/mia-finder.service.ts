@@ -19,13 +19,13 @@ export class MiaFinderService {
     protected storageService: GoogleStorageService
   ) { }
 
-  uploadFiles(files: Array<File>, parentId?: number) {
+  uploadFiles(files: Array<File>, parentId?: number, extra?: any) {
     for (const file of files) {
-      this.upload(file, parentId);
+      this.upload(file, parentId, extra);
     }
   }
 
-  upload(file: File, parentId?: number) {
+  upload(file: File, parentId?: number, extra?: any) {
     let item = new MiaFinder();
     item.parent_id = parentId;
     item.title = file.name;
@@ -33,6 +33,7 @@ export class MiaFinderService {
     item.uploadStatus = MiaFinder.UPLOAD_STATUS_IN_PROGRESS;
     item.uploadProgress = 0;
     item.uploadMemory = file;
+    item.extra = extra;
 
     this.storageService.uploadWithProgressDirect(file).subscribe(data => {
       if (data.type == HttpEventType.UploadProgress) {
