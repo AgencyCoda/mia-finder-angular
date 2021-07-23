@@ -1,0 +1,22 @@
+<div class="header" mat-dialog-title>
+    <button *ngIf="!isTop()" mat-icon-button (click)="onClickUpFolder()">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    {{ current.title }}
+    <button mat-icon-button class="button-close" mat-dialog-close> <mat-icon>close</mat-icon> </button>
+</div>
+
+<div class="move-file">
+    <div *ngIf="isLoading" class="loading">Loading...</div>
+    <mat-action-list *ngIf="!isLoading">
+        <button mat-list-item *ngFor="let folder of folders" (click)="onClickFolder(folder)">
+            <div class="drive-icon icon-folder"></div>
+            {{folder.title}}
+            <mat-icon class="animated">chevron_right</mat-icon>
+        </button>
+    </mat-action-list>
+</div>
+
+<mat-dialog-actions class="mat-dialog-buttons">
+    <button mat-flat-button class="button-flat button-primary" (click)="onClickMove()"> MOVE HERE </button>
+</mat-dialog-actions>

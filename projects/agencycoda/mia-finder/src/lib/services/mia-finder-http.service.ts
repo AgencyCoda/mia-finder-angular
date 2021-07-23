@@ -23,6 +23,10 @@ export class MiaFinderHttpService extends MiaBaseCrudHttpService<MiaFinder> {
     return this.get(this.config.baseUrl + 'mia-finder/fetch/' + itemId);
   }
 
+  move(itemId: number, parentId: number): Promise<MiaFinder> {
+    return this.post(this.config.baseUrl + 'mia-finder/move-item', { id: itemId, parent_id: parentId });
+  }
+
   fetchOb(itemId: number): Observable<MiaFinder> {
     return this.getOb(this.config.baseUrl + 'mia-finder/fetch/' + itemId);
   }

@@ -16,6 +16,8 @@ export * from './lib/components/mia-uploading/mia-uploading.component';
 export * from './lib/components/mia-breadcrumb/mia-breadcrumb.component';
 export * from './lib/components/mia-finder-table/mia-finder-table.component';
 
+export * from './lib/modals/mia-move-file-modal/mia-move-file-modal.component';
+
 /*
  * Services
  */

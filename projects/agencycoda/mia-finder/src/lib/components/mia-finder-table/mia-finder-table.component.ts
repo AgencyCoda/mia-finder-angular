@@ -16,7 +16,7 @@ export class MiaFinderTableConfig extends MiaTableConfig {
         { icon: 'create', title: 'See', key: 'view' },
         { icon: 'create', title: 'Download', key: 'download' },
         { icon: 'create', title: 'Open Link', key: 'open' },
-        { icon: 'create', title: 'Move To', key: 'move-to' },
+        { icon: 'move', title: 'Move To', key: 'move-to' },
         { icon: 'create', title: 'Change Name', key: 'change-name' },
         { icon: 'delete', title: 'Delete', key: 'remove' },
       ]

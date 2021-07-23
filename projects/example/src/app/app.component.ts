@@ -37,10 +37,16 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.loadExample(item.id);
   }
 
+  onClickMove(item: MiaFinder) {
+    this.finderModalService.moveFile(item, this.finderSelected!).subscribe(res => this.loadItems());
+  }
+
   onClickItem(result: { key: string; item: MiaFinder; }) {
     console.log(result);
     if(result.key == 'click-row' && result.item.type == MiaFinder.TYPE_FOLDER){
       this.loadExample(result.item.id);
+    } else if (result.key == 'move-to') {
+      this.onClickMove(result.item);
     }
   }
 

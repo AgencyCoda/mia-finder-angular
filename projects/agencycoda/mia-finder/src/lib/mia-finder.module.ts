@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import { MatListModule } from '@angular/material/list';
 
 /** MIA Libraries */
 import { MiaCoreModule } from '@agencycoda/mia-core';
@@ -22,6 +22,7 @@ import { MiaBreadcrumbComponent } from './components/mia-breadcrumb/mia-breadcru
 import { MiaFinderTableComponent } from './components/mia-finder-table/mia-finder-table.component';
 import { FileColumnComponent } from './columns/file-column/file-column.component';
 import { SizeColumnComponent } from './columns/size-column/size-column.component';
+import { MiaMoveFileModalComponent } from './modals/mia-move-file-modal/mia-move-file-modal.component';
 
 
 
@@ -36,7 +37,8 @@ import { SizeColumnComponent } from './columns/size-column/size-column.component
     MiaBreadcrumbComponent,
     MiaFinderTableComponent,
     FileColumnComponent,
-    SizeColumnComponent
+    SizeColumnComponent,
+    MiaMoveFileModalComponent
   ],
   imports: [
     /** Angular Core */
@@ -52,7 +54,8 @@ import { SizeColumnComponent } from './columns/size-column/size-column.component
     /** Angular Material */
     MatDialogModule,
     MatIconModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatListModule
   ],
   exports: [
     MiaFinderComponent,
