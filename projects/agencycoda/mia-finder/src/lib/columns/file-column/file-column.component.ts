@@ -23,6 +23,6 @@ export class FileColumnComponent extends BaseColumnComponent implements OnInit {
     } else if (this.item.type == MiaFinder.TYPE_LINK) {
       return '/assets/icons/file-link.svg';
     }
-    return '/assets/icons/file' + StringHelper.getExtension(this.item.url) + '.svg';
+    return '/assets/icons/file-' + StringHelper.getExtension(this.item.url) + '.svg';
   }
 }
