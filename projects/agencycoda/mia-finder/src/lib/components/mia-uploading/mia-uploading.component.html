@@ -9,12 +9,8 @@
     </div>
     <div class="body">
         <div class="file animated" *ngFor="let file of files" [ngClass]="{'file-completed': file.status == 1, 'file-wrong': file.status == 2}">
-            <div class="drive-icon icon-doc">
-                <!--<img *ngIf="file.image != '' || file.image == undefined || file.image == null || !!file.image"
-                     [src]="file.image"
-                     [hidden]="!file.image"
-                     onError="this.onerror=null;this.src='/assets/img/image-not-found.png';"
-                     />-->
+            <div class="drive-icon">
+                <img [src]="getIconImage(file)" onerror="this.src='/assets/icons/not-found.svg';" />
             </div>
             <div class="progress">
                 <div style="display: flex; align-items: center; justify-content: space-between;">

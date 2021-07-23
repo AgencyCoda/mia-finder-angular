@@ -1,4 +1,4 @@
-import { BytesHelper } from '@agencycoda/mia-core';
+import { BytesHelper, StringHelper } from '@agencycoda/mia-core';
 import { Component, OnInit } from '@angular/core';
 import { MiaFinder } from '../../entities/mia-finder';
 import { MiaFinderService } from '../../services/mia-finder.service';
@@ -61,5 +61,9 @@ export class MiaUploadingComponent implements OnInit {
 
   bytesToString(bytes: number) {
     return BytesHelper.toString(bytes);
+  }
+
+  getIconImage(file: MiaFinder): string {
+    return '/assets/icons/file-' + StringHelper.getExtension(file.title) + '.svg';
   }
 }
