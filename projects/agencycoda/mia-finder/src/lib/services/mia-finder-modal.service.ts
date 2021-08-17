@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { MiaVisorComponent } from '../components/mia-visor/mia-visor.component';
 import { MiaFinder } from '../entities/mia-finder';
 import { MiaMoveFileModalComponent } from '../modals/mia-move-file-modal/mia-move-file-modal.component';
 import { MiaChangeNameModalService } from './mia-change-name-modal.service';
@@ -34,6 +35,12 @@ export class MiaFinderModalService {
   moveFile(item: MiaFinder, folder: MiaFinder, topId?: number): Observable<boolean> {
     return this.dialog.open(MiaMoveFileModalComponent, {
       data: { topId: topId, file: item, folder: folder }
+    }).afterClosed();
+  }
+
+  openVisor(item: MiaFinder): Observable<boolean> {
+    return this.dialog.open(MiaVisorComponent, {
+      data: item
     }).afterClosed();
   }
 }

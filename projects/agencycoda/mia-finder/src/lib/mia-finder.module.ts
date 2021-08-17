@@ -7,6 +7,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 /** MIA Libraries */
 import { MiaCoreModule } from '@agencycoda/mia-core';
@@ -23,6 +26,10 @@ import { MiaFinderTableComponent } from './components/mia-finder-table/mia-finde
 import { FileColumnComponent } from './columns/file-column/file-column.component';
 import { SizeColumnComponent } from './columns/size-column/size-column.component';
 import { MiaMoveFileModalComponent } from './modals/mia-move-file-modal/mia-move-file-modal.component';
+import { MiaVisorComponent } from './components/mia-visor/mia-visor.component';
+
+
+
 
 
 
@@ -38,7 +45,8 @@ import { MiaMoveFileModalComponent } from './modals/mia-move-file-modal/mia-move
     MiaFinderTableComponent,
     FileColumnComponent,
     SizeColumnComponent,
-    MiaMoveFileModalComponent
+    MiaMoveFileModalComponent,
+    MiaVisorComponent
   ],
   imports: [
     /** Angular Core */
@@ -53,15 +61,19 @@ import { MiaMoveFileModalComponent } from './modals/mia-move-file-modal/mia-move
 
     /** Angular Material */
     MatDialogModule,
+    MatButtonModule,
     MatIconModule,
     MatProgressBarModule,
-    MatListModule
+    MatListModule,
+    MatMenuModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MiaFinderComponent,
     MiaUploadingComponent,
     MiaBreadcrumbComponent,
-    MiaFinderTableComponent
+    MiaFinderTableComponent,
+    MiaVisorComponent
   ]
 })
 export class MiaFinderModule { }

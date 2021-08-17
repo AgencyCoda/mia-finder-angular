@@ -1,0 +1,24 @@
+<div *ngIf="data" class="pictures-viewer">
+
+    <div class="all-images">
+        <div class="container-scroll">
+            <div class="container-image">
+                <img *ngIf="isImage()" [src]="data.url" alt="" />
+                <video *ngIf="isVideo()" controls [src]="data.url" alt=""></video>
+                <div class="background-exit"></div>
+                <mat-spinner *ngIf="isLoading"></mat-spinner>
+            </div>
+        </div>
+    </div>
+    
+    <div class="toolbar">
+        <button mat-icon-button mat-dialog-close > <mat-icon>arrow_back</mat-icon> </button>
+        <div class="name"> <div class="icon icon-image"></div> {{ data.title }} </div>
+        <button mat-icon-button [matMenuTriggerFor]="settings"> <mat-icon>more_vert</mat-icon> </button>
+
+        <mat-menu #settings="matMenu">
+            <button mat-menu-item (click)="onDownload()">Download</button>
+        </mat-menu>
+    </div>
+
+</div>

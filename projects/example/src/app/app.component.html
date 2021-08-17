@@ -9,6 +9,8 @@
 <input #inputFile type="file" (change)="onUploadEvent($event)" style="display: none;" accept="image/png, image/jpeg" />
 <button (click)="inputFile.click();">Upload file</button>
 
+<button (click)="onClickOpenVisor()">Open Visor</button>
+
 <div>
     <p>Tags:</p>
     <p *ngFor="let tag of tags.data">{{ tag.title }}</p>

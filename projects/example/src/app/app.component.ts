@@ -89,4 +89,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   loadTags() {
     this.finderHttpService.tags(new MiaQuery()).then(result => this.tags = result);
   }
+
+  onClickOpenVisor() {
+    let example = new MiaFinder();
+    example.title = 'Captura de Pantalla 2021-05-24 a la(s) 11.06.10.png';
+    example.url = 'https://storage.googleapis.com/valero-files/438_20215120_Captura de Pantalla 2021-05-24 a la(s) 11.06.10.png';
+    example.size = 5000;
+    this.finderModalService.openVisor(example);
+  }
 }
