@@ -2,6 +2,7 @@ import { MiaColumn, MiaTableComponent, MiaTableConfig } from '@agencycoda/mia-ta
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { FileColumnComponent } from '../../columns/file-column/file-column.component';
+import { MoreFinderColumnComponent } from '../../columns/more-finder-column/more-finder-column.component';
 import { SizeColumnComponent } from '../../columns/size-column/size-column.component';
 import { MiaFinder } from '../../entities/mia-finder';
 import { MiaFinderHttpService } from '../../services/mia-finder-http.service';
@@ -11,16 +12,7 @@ export class MiaFinderTableConfig extends MiaTableConfig {
     { key: 'file', type: 'custom', title: 'Name', extra: { component: FileColumnComponent } },
     { key: 'updated_at', type: 'date', title: 'Last Update', field_key: 'updated_at' },
     { key: 'size', type: 'custom', title: 'Size', extra: { component: SizeColumnComponent } },
-    { key: 'more', type: 'more', title: '', extra: {
-      actions: [
-        { icon: 'create', title: 'See', key: 'view' },
-        { icon: 'create', title: 'Download', key: 'download' },
-        { icon: 'create', title: 'Open Link', key: 'open' },
-        { icon: 'move', title: 'Move To', key: 'move-to' },
-        { icon: 'create', title: 'Change Name', key: 'change-name' },
-        { icon: 'delete', title: 'Delete', key: 'remove' },
-      ]
-    } }
+    { key: 'more', type: 'custom', title: '', extra: { component: MoreFinderColumnComponent } },
   ]
 }
 

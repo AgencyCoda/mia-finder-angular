@@ -27,6 +27,7 @@ import { FileColumnComponent } from './columns/file-column/file-column.component
 import { SizeColumnComponent } from './columns/size-column/size-column.component';
 import { MiaMoveFileModalComponent } from './modals/mia-move-file-modal/mia-move-file-modal.component';
 import { MiaVisorComponent } from './components/mia-visor/mia-visor.component';
+import { MoreFinderColumnComponent } from './columns/more-finder-column/more-finder-column.component';
 
 
 
@@ -46,7 +47,8 @@ import { MiaVisorComponent } from './components/mia-visor/mia-visor.component';
     FileColumnComponent,
     SizeColumnComponent,
     MiaMoveFileModalComponent,
-    MiaVisorComponent
+    MiaVisorComponent,
+    MoreFinderColumnComponent
   ],
   imports: [
     /** Angular Core */

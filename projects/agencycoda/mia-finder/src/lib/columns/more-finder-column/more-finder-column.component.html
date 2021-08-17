@@ -1,0 +1,9 @@
+<button mat-icon-button [matMenuTriggerFor]="actions" (click)="$event.stopPropagation()"><mat-icon>more_vert</mat-icon></button>
+<mat-menu #actions="matMenu">
+    <button *ngIf="!isFolder()" mat-menu-item (click)="clickButton('view', $event)"><mat-icon>create</mat-icon> See</button>
+    <button *ngIf="isFolder()" mat-menu-item (click)="clickButton('open', $event)"><mat-icon>create</mat-icon> Open</button>
+    <button *ngIf="!isFolder()" mat-menu-item (click)="clickButton('download', $event)"><mat-icon>create</mat-icon> Download</button>
+    <button mat-menu-item (click)="clickButton('change-name', $event)"><mat-icon>create</mat-icon> Change Name</button>
+    <button mat-menu-item (click)="clickButton('move-to', $event)"><mat-icon>move</mat-icon> Move To</button>
+    <button mat-menu-item (click)="clickButton('remove', $event)"><mat-icon>delete</mat-icon> Remove</button>
+</mat-menu>
