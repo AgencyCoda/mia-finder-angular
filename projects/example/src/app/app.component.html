@@ -11,6 +11,10 @@
 
 <button (click)="onClickOpenVisor()">Open Visor</button>
 
+
+<input #inputFile2 type="file" (change)="onUploadCustomEvent($event)" style="display: none;" accept="image/png, image/jpeg" />
+<button (click)="inputFile2.click();">Upload file Custom</button>
+
 <div>
     <p>Tags:</p>
     <p *ngFor="let tag of tags.data">{{ tag.title }}</p>

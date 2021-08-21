@@ -1,5 +1,6 @@
 
-import { MiaPagination, MiaQuery } from '@agencycoda/mia-core';
+import { GoogleStorageService, MiaPagination, MiaQuery } from '@agencycoda/mia-core';
+import { HttpEventType } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MiaFinder, MiaFinderHttpService, MiaFinderModalService, MiaFinderService, MiaFinderTableComponent, MiaFinderTableConfig, MiaFinderTag } from 'projects/agencycoda/mia-finder/src/public-api';
 
@@ -20,7 +21,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(
     protected finderHttpService: MiaFinderHttpService,
     protected finderModalService: MiaFinderModalService,
-    protected miaFinderService: MiaFinderService
+    protected miaFinderService: MiaFinderService,
+    protected storageService: GoogleStorageService
   ) {
 
   }
@@ -69,6 +71,44 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   onUploadEvent($event: any) {
     this.miaFinderService.uploadFiles($event.target.files);
+  }
+
+  onUploadCustomEvent($event: any) {
+    for (const file of $event.target.files) {
+      // Create file
+      let item = new MiaFinder();
+      item.title = file.name;
+      item.size = file.size;
+      item.uploadStatus = MiaFinder.UPLOAD_STATUS_IN_PROGRESS;
+      item.uploadProgress = 0;
+      item.uploadMemory = file;
+      item.hasRetry = false;
+      
+      // Upload to service
+      this.storageService.uploadWithProgressDirect(file).subscribe(data => {
+        if (data.type == HttpEventType.UploadProgress) {
+          item.uploadProgress = Math.round((100 / data.total) * data.loaded);
+        } else if (data.type == HttpEventType.Response) {
+          item.uploadMemory = undefined;
+          item.url = 'https://storage.googleapis.com/' + 'coda-files' + '/' + data.name;
+          
+          this.finderHttpService.save(item).then(result => {
+            item.id = result.id;
+            item.uploadProgress = MiaFinder.UPLOAD_STATUS_SUCCESS;
+      
+            this.miaFinderService.uploadCompleted.next(item);
+          }).catch(error => {
+            item.uploadStatus = MiaFinder.UPLOAD_STATUS_ERROR;
+          });
+
+        }
+      }, error => {
+        item.uploadMemory = file;
+        item.uploadStatus = MiaFinder.UPLOAD_STATUS_ERROR;
+      });
+
+      this.miaFinderService.uploading.next(item);
+    }
   }
 
   onClickNewFolder() {

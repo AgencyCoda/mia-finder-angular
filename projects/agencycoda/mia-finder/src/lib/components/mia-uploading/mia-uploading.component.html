@@ -23,7 +23,8 @@
                 <div *ngIf="file.uploadStatus == 0" class="item uploading"></div>
                 <div *ngIf="file.uploadStatus == 1" class="item success"><mat-icon>check</mat-icon></div>
                 <div *ngIf="file.uploadStatus == 2" class="item wrong">
-                    <button mat-icon-button matTooltip="Again" matTooltipClass="tooltip-styles" (click)="retryUpload(file)"><mat-icon>restore</mat-icon></button>
+                    <button *ngIf="file.hasRetry" mat-icon-button matTooltip="Again" matTooltipClass="tooltip-styles" (click)="retryUpload(file)"><mat-icon>restore</mat-icon></button>
+                    <mat-icon *ngIf="!file.hasRetry">error</mat-icon>
                 </div>
             </div>
         </div>

@@ -27,6 +27,7 @@ export class MiaFinder extends MiaModel {
     uploadProgress? = 0;
     uploadStatus? = 0;
     uploadMemory?: File;
+    hasRetry? = true;
 
     nested_parents?: MiaFinder;
 
