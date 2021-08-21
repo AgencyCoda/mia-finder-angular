@@ -53,6 +53,7 @@ $box_shadow_12: 0 3px 10px -8px rgba($color: #393D63, $alpha: 0.04), 0 10px 23px
                     align-items: center;
                     justify-content: center;
                 }
+                .uploading { color: #393D63; }
                 .success { color: $color_accent; }
                 .wrong { color: $color_error; }
             }
