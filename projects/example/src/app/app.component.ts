@@ -90,7 +90,7 @@ export class AppComponent implements OnInit, AfterViewInit {
           item.uploadProgress = Math.round((100 / data.total) * data.loaded);
         } else if (data.type == HttpEventType.Response) {
           item.uploadMemory = undefined;
-          item.url = 'https://storage.googleapis.com/' + 'coda-files' + '/' + data.name;
+          item.url = 'https://storage.googleapis.com/' + 'coda-files' + '/' + data.body.name;
           
           this.finderHttpService.save(item).then(result => {
             item.id = result.id;
