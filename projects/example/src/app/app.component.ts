@@ -135,6 +135,13 @@ export class AppComponent implements OnInit, AfterViewInit {
     example.title = 'Captura de Pantalla 2021-05-24 a la(s) 11.06.10.pdf';
     example.url = 'https://storage.googleapis.com/valero-files/453_20217420_576_flutter_tutorial.pdf';
     example.size = 5000;
-    this.finderModalService.openVisor(example);
+
+    let example2 = new MiaFinder();
+    example2.title = 'sphere.jpg';
+    //example2.url = 'https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg';
+    example2.url = 'https://storage.googleapis.com/valero-files/2_2021248_R0012274.JPG';
+    example2.size = 50000;
+
+    this.finderModalService.openVisor(example2);
   }
 }

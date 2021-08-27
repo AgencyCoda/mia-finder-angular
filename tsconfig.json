@@ -2,6 +2,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "noImplicitAny": false,
     "paths": {
       "@agencycoda/mia-finder": [
         "dist/agencycoda/mia-finder/agencycoda-mia-finder",

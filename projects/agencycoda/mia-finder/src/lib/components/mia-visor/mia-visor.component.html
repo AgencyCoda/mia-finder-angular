@@ -2,14 +2,17 @@
 
     <div class="all-images">
         <div class="container-scroll">
-            <div *ngIf="!isPdf" class="container-image">
+            <div *ngIf="!isPdf && !isTheta" class="container-image">
                 <img *ngIf="isImage()" [src]="data.url" alt="" />
                 <video *ngIf="isVideo()" controls [src]="data.url" alt=""></video>
                 <div class="background-exit"></div>
                 <mat-spinner *ngIf="isLoading"></mat-spinner>
             </div>
-            <div *ngIf="isPdf" class="container-iframe">
+            <div *ngIf="isPdf && !isTheta" class="container-iframe">
                 <iframe [src]="getUrlSanitizer()"></iframe>
+            </div>
+            <div *ngIf="isTheta" class="container-theta">
+                <div id="viewer"></div>
             </div>
         </div>
     </div>
@@ -17,6 +20,7 @@
     <div class="toolbar">
         <button mat-icon-button mat-dialog-close > <mat-icon>arrow_back</mat-icon> </button>
         <div class="name"> <div class="icon icon-image"></div> {{ data.title }} </div>
+        <button *ngIf="isPossibleTheta()" mat-icon-button (click)="onClickTheta360()" style="margin-right: 5px;"> <mat-icon>360</mat-icon> </button>
         <button mat-icon-button [matMenuTriggerFor]="settings"> <mat-icon>more_vert</mat-icon> </button>
 
         <mat-menu #settings="matMenu">
