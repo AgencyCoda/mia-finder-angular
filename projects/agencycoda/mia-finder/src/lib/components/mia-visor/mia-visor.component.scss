@@ -24,6 +24,19 @@
                     transform: translate(-50%, -50%);
                 }
             }
+
+            .container-iframe {
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+                padding: 60px;
+
+                iframe {
+                    width: calc(100% - 120px);
+                    height: calc(100% - 80px);
+                }
+            }
+
         .background-exit{
             position: absolute;
             top: 0; left: 0;

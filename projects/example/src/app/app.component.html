@@ -6,13 +6,13 @@
 <button (click)="onClickNewFileLink()">New File with link</button>
 <button (click)="onClickChangeName()">Change name</button>
 
-<input #inputFile type="file" (change)="onUploadEvent($event)" style="display: none;" accept="image/png, image/jpeg" />
+<input #inputFile type="file" (change)="onUploadEvent($event)" style="display: none;" />
 <button (click)="inputFile.click();">Upload file</button>
 
 <button (click)="onClickOpenVisor()">Open Visor</button>
 
 
-<input #inputFile2 type="file" (change)="onUploadCustomEvent($event)" style="display: none;" accept="image/png, image/jpeg" />
+<input #inputFile2 type="file" (change)="onUploadCustomEvent($event)" style="display: none;" />
 <button (click)="inputFile2.click();">Upload file Custom</button>
 
 <div>

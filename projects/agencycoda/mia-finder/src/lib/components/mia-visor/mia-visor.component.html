@@ -2,11 +2,14 @@
 
     <div class="all-images">
         <div class="container-scroll">
-            <div class="container-image">
+            <div *ngIf="!isPdf" class="container-image">
                 <img *ngIf="isImage()" [src]="data.url" alt="" />
                 <video *ngIf="isVideo()" controls [src]="data.url" alt=""></video>
                 <div class="background-exit"></div>
                 <mat-spinner *ngIf="isLoading"></mat-spinner>
+            </div>
+            <div *ngIf="isPdf" class="container-iframe">
+                <iframe [src]="getUrlSanitizer()"></iframe>
             </div>
         </div>
     </div>
