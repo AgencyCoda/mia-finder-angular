@@ -34,6 +34,7 @@ export class MiaFinderModalService {
 
   moveFile(item: MiaFinder, folder: MiaFinder, topId?: number): Observable<boolean> {
     return this.dialog.open(MiaMoveFileModalComponent, {
+      width: '300px',
       data: { topId: topId, file: item, folder: folder }
     }).afterClosed();
   }
