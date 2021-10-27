@@ -1,10 +1,10 @@
 {
   "name": "@agencycoda/mia-finder",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "peerDependencies": {
     "@angular/common": ">=11.0.0",
     "@angular/core": ">=11.0.0",
-    "@agencycoda/mia-core": ">=11.0.24",
+    "@agencycoda/mia-core": ">=11.0.39",
     "@agencycoda/mia-auth": ">=11.0.17",
     "@agencycoda/mia-form": ">=0.0.18",
     "@agencycoda/mia-table": ">=0.0.24",

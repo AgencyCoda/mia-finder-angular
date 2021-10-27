@@ -48,7 +48,7 @@ export class MiaVisorComponent implements OnInit {
 
   isPossibleTheta() {
     let extension = StringHelper.getExtension(this.data.title);
-    if((extension == 'jpg' || extension == 'jpeg') && this.data.size > 4000){
+    if((extension == 'jpg' || extension == 'jpeg') && this.data.size > 4000 && this.data.title.charAt(0) == 'R'){
       return true;
     }
 
