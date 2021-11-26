@@ -55,7 +55,7 @@ export class MiaFinderService {
         item.uploadProgress = Math.round((100 / data.total) * data.loaded);
       } else if (data.type == HttpEventType.Response) {
         item.uploadMemory = undefined;
-        item.url = 'https://storage.googleapis.com/' + this.config.bucket + '/' + data.body.name;
+        item.url = 'https://storage.googleapis.com/' + this.config.bucket + '/' + escape(data.body.name);
         this.save(item);
       }
     }, error => {
