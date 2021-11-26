@@ -20,15 +20,22 @@ export class MiaFinderService {
   ) { }
 
   uploadFiles(files: Array<File>, parentId?: number, extra?: any) {
-    for (const file of files) {
+    for (let file of files) {
       this.upload(file, parentId, extra);
     }
   }
 
-  upload(file: File, parentId?: number, extra?: any) {
+  escapeFile(file:File):File
+  {
+    return new File([file], escape(file.name), {type: file.type});
+  }
+
+  upload(file: File, parentId?: number, extra?: any)
+  {
+    file = this.escapeFile(file);
     let item = new MiaFinder();
     item.parent_id = parentId;
-    item.title = escape(file.name);
+    item.title = unescape(file.name);
     item.size = file.size;
     item.uploadStatus = MiaFinder.UPLOAD_STATUS_IN_PROGRESS;
     item.uploadProgress = 0;
