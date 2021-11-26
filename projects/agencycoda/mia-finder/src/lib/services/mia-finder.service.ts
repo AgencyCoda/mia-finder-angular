@@ -28,7 +28,7 @@ export class MiaFinderService {
   upload(file: File, parentId?: number, extra?: any) {
     let item = new MiaFinder();
     item.parent_id = parentId;
-    item.title = file.name;
+    item.title = escape(file.name);
     item.size = file.size;
     item.uploadStatus = MiaFinder.UPLOAD_STATUS_IN_PROGRESS;
     item.uploadProgress = 0;

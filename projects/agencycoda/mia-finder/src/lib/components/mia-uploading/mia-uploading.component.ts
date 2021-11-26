@@ -51,6 +51,8 @@ export class MiaUploadingComponent implements OnInit {
   loadConfig() {
     this.miaFinderService.uploading.subscribe(file => {
       this.isActive = true;
+      // file.title = escape(file.title);
+      // file.url = escape(file.url);
       this.files.push(file);
     });
 
