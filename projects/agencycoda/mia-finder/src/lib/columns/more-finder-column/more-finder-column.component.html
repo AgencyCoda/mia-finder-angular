@@ -1,7 +1,7 @@
 <button mat-icon-button [matMenuTriggerFor]="actions" (click)="$event.stopPropagation()"><mat-icon>more_vert</mat-icon></button>
 <mat-menu #actions="matMenu">
     <button *ngIf="isImage() || isVideo() || isPDF()" mat-menu-item (click)="clickButton('view', $event)"><mat-icon>remove_red_eye</mat-icon> See</button>
-    <button *ngIf="isFolder()" mat-menu-item (click)="clickButton('open', $event)"><mat-icon>photo_library</mat-icon> Open</button>
+    <button *ngIf="isFolder()" mat-menu-item (click)="clickButton('open', $event)"><mat-icon>folder_open</mat-icon> Open Folder</button>
     <button *ngIf="!isFolder()" mat-menu-item (click)="clickButton('download', $event)"><mat-icon>cloud_download</mat-icon> Download</button>
     <button mat-menu-item (click)="clickButton('change-name', $event)"><mat-icon>create</mat-icon> Change Name</button>
     <button mat-menu-item (click)="clickButton('move-to', $event)"><mat-icon>drive_file_move</mat-icon> Move To</button>
