@@ -28,7 +28,7 @@ export class MoreFinderColumnComponent extends BaseColumnComponent implements On
 
   isVideo(): boolean
   {
-    return StringHelper.isVideo(this.item.type);
+    return StringHelper.isVideo(this.item.url);
   }
 
   isPDF(): boolean
