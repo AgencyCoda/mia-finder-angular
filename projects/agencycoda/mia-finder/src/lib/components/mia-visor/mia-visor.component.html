@@ -3,16 +3,16 @@
 	<div class="all-images">
 		<div class="container-scroll">
 
-			<div *ngIf="!isPdf && !isTheta" class="container-image">
+			<div *ngIf="!isPDF() && !isPossibleTheta()" class="container-image">
 				<img *ngIf="isImage()" [src]="selectedItem.url" alt="" />
 				<video *ngIf="isVideo()" controls [src]="selectedItem.url" alt=""></video>
 				<div class="background-exit"></div>
 				<mat-spinner *ngIf="isLoading"></mat-spinner>
 			</div>
-			<div *ngIf="isPdf && !isTheta" class="container-iframe">
+			<div *ngIf="isPDF() && !isPossibleTheta()" class="container-iframe">
 				<iframe [src]="getUrlSanitizer()"></iframe>
 			</div>
-			<div *ngIf="isTheta" class="container-theta">
+			<div *ngIf="isPossibleTheta()" class="container-theta">
 				<div id="viewer"></div>
 			</div>
 
@@ -20,7 +20,7 @@
 				<button mat-icon-button (click)="onClickPrevFile()"> <mat-icon>arrow_back_ios_new</mat-icon> </button>
 			</div>
 
-			<div class="next-file-button" *ngIf="selectedPosition < (data.items.length-1)">
+			<div class="next-file-button" *ngIf="selectedPosition < (items.length-1)">
 				<button mat-icon-button (click)="onClickNextFile()"> <mat-icon>arrow_forward_ios_new</mat-icon> </button>
 			</div>
 
