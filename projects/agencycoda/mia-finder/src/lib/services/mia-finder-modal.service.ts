@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+// import { EventEmitter } from 'stream';
 import { MiaVisorComponent } from '../components/mia-visor/mia-visor.component';
 import { MiaFinder } from '../entities/mia-finder';
 import { MiaMoveFileModalComponent } from '../modals/mia-move-file-modal/mia-move-file-modal.component';
@@ -39,9 +40,17 @@ export class MiaFinderModalService {
     }).afterClosed();
   }
 
-  openVisor(item: MiaFinder): Observable<boolean> {
+  openVisor(items: Array<MiaFinder>, selectedId?:number): Observable<boolean> {
     return this.dialog.open(MiaVisorComponent, {
-      data: item
+      data: {items: items, selectedId: selectedId}
     }).afterClosed();
   }
+
+  // openVisorMulti(item: MiaFinder): Observable<any> {
+  //   let dialogRef = this.dialog.open(MiaVisorComponent, {
+  //     data: item
+  //   });
+
+  //   return dialogRef.componentInstance.clickItem;
+  // }
 }

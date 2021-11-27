@@ -10,7 +10,7 @@ import { MiaFinder, MiaFinderHttpService, MiaFinderModalService, MiaFinderServic
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  
+
   @ViewChild('tableComp') tableComp!: MiaFinderTableComponent;
 
   finderSelected?: MiaFinder;
@@ -83,7 +83,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       item.uploadProgress = 0;
       item.uploadMemory = file;
       item.hasRetry = false;
-      
+
       // Upload to service
       this.storageService.uploadWithProgressDirect(file).subscribe(data => {
         if (data.type == HttpEventType.UploadProgress) {
@@ -91,11 +91,11 @@ export class AppComponent implements OnInit, AfterViewInit {
         } else if (data.type == HttpEventType.Response) {
           item.uploadMemory = undefined;
           item.url = 'https://storage.googleapis.com/' + 'coda-files' + '/' + data.body.name;
-          
+
           this.finderHttpService.save(item).then(result => {
             item.id = result.id;
             item.uploadProgress = MiaFinder.UPLOAD_STATUS_SUCCESS;
-      
+
             this.miaFinderService.uploadCompleted.next(item);
           }).catch(error => {
             item.uploadStatus = MiaFinder.UPLOAD_STATUS_ERROR;
@@ -132,16 +132,18 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   onClickOpenVisor() {
     let example = new MiaFinder();
+    example.id = 23;
     example.title = 'Captura de Pantalla 2021-05-24 a la(s) 11.06.10.pdf';
     example.url = 'https://storage.googleapis.com/valero-files/453_20217420_576_flutter_tutorial.pdf';
     example.size = 5000;
 
     let example2 = new MiaFinder();
+    example2.id = 1;
     example2.title = 'sphere.jpg';
     //example2.url = 'https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg';
     example2.url = 'https://storage.googleapis.com/valero-files/2_2021248_R0012274.JPG';
     example2.size = 50000;
-
-    this.finderModalService.openVisor(example2);
+    let items = [example, example2];
+    this.finderModalService.openVisor(items);
   }
 }
