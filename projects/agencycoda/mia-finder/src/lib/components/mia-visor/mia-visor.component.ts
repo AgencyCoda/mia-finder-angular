@@ -43,14 +43,12 @@ export class MiaVisorComponent implements OnInit {
 
 	onClickNextFile()
 	{
-		console.log( 'NEXT FILE' );
 		this.selectedPosition++;
 		this.selectedItem = this.items[ this.selectedPosition ];
 	}
 
 	onClickPrevFile()
 	{
-		console.log( 'PREV FILE' );
 		this.selectedPosition--;
 		this.selectedItem = this.items[ this.selectedPosition ];
 	}
