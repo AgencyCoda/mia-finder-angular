@@ -12,16 +12,19 @@
 			<div *ngIf="isPDF() && !isPossibleTheta()" class="container-iframe">
 				<iframe [src]="getUrlSanitizer()"></iframe>
 			</div>
-			<div *ngIf="isPossibleTheta()" class="container-theta">
-				<div id="viewer"></div>
-			</div>
 
-      <div class="prev-file-button" *ngIf="selectedPosition > 0">
-				<button mat-icon-button (click)="onClickPrevFile()"> <mat-icon>arrow_back_ios_new</mat-icon> </button>
+        <div *ngIf="isPossibleTheta()" class="container-theta">
+          <div id="viewer"></div>
+        </div>
+
+
+
+			<div class="prev-file-button" *ngIf="selectedPosition > 0">
+				<button mat-icon-button (click)="onClickPrevFile($event)"> <mat-icon>arrow_back_ios_new</mat-icon> </button>
 			</div>
 
 			<div class="next-file-button" *ngIf="selectedPosition < (items.length-1)">
-				<button mat-icon-button (click)="onClickNextFile()"> <mat-icon>arrow_forward_ios_new</mat-icon> </button>
+				<button mat-icon-button (click)="onClickNextFile($event)"> <mat-icon>arrow_forward_ios_new</mat-icon> </button>
 			</div>
 
 		</div>

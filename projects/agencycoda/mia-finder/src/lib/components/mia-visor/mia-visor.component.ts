@@ -20,6 +20,7 @@ export class MiaVisorComponent implements OnInit {
 	selectedItem!:MiaFinder;
 	selectedPosition = 0;
 	items!:Array<MiaFinder>;
+  viewer:Viewer;
 
 	constructor(
 		protected dialogRef: MatDialogRef<MiaVisorComponent>,
@@ -41,32 +42,54 @@ export class MiaVisorComponent implements OnInit {
 		window.open(this.selectedItem.url);
 	}
 
-	onClickNextFile()
+	onClickNextFile(event:MouseEvent)
 	{
+    event.stopPropagation();
 		this.selectedPosition++;
 		this.selectedItem = this.items[ this.selectedPosition ];
+    this.destroyVisor();
+    if( this.isPossibleTheta() ) this.onClickTheta360();
 	}
 
-	onClickPrevFile()
+	onClickPrevFile(event:MouseEvent)
 	{
+    event.stopPropagation();
 		this.selectedPosition--;
 		this.selectedItem = this.items[ this.selectedPosition ];
+    this.destroyVisor();
+    if( this.isPossibleTheta() ) this.onClickTheta360();
 	}
 
-	onClickTheta360() {
+  destroyVisor()
+  {
+    if( this.viewer && this.viewer != null )
+    {
+      setTimeout(() => {
+        this.viewer.destroy();
+      }, 1000);
+    }
+  }
+
+	onClickTheta360()
+  {
 		setTimeout(() => {
 			this.loadTheta360();
-		}, 2000);
+		}, 1000);
 		// this.isTheta = true;
 	}
 
 	loadTheta360() {
-		const viewer = new Viewer({
-			container: document.querySelector('#viewer'),
-			//panorama: 'https://cors-anywhere.herokuapp.com/https://storage.googleapis.com/valero-files/2_2021248_R0012274.JPG'
-			//panorama: 'https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg'
-			panorama: this.selectedItem.url
-		});
+    // if( this.viewer )
+    // {
+    //   // this.viewer.destroy();
+    //   this.viewer.setPsanorama( this.selectedItem.url );
+    //   // this.onClickTheta360();
+    // }else{
+      this.viewer = new Viewer({
+        container: document.querySelector('#viewer'),
+        panorama: this.selectedItem.url
+      });
+    // }
 	}
 
 	isPossibleTheta() {
@@ -105,6 +128,7 @@ export class MiaVisorComponent implements OnInit {
 		}else{
 			this.selectedItem = this.items[0];
 		}
+    if( this.isPossibleTheta() ) this.onClickTheta360();
 	}
 
 }

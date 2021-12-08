@@ -142,13 +142,19 @@ export class AppComponent implements OnInit, AfterViewInit {
     example3.url = 'https://storage.googleapis.com/valero-files/test.cad';
     example3.size = 300;
 
+    let example4 = new MiaFinder();
+    example4.id = 11;
+    example4.title = 'R360.jpg';
+    example4.url = 'https://storage.googleapis.com/valero-files/58_202110116_R0015482.JPG';
+    example4.size = 80000;
+
     let example2 = new MiaFinder();
     example2.id = 1;
     example2.title = 'sphere.jpg';
     //example2.url = 'https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg';
     example2.url = 'https://storage.googleapis.com/valero-files/2_2021248_R0012274.JPG';
     example2.size = 50000;
-    let items = [example3, example2, example];
+    let items = [example3, example4, example2, example, example3, example4, example2, example, example, example4];
     this.finderModalService.openVisor(items);
   }
 }
