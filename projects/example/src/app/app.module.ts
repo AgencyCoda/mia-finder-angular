@@ -1,5 +1,5 @@
 import { MIA_AUTH_PROVIDER } from '@agencycoda/mia-auth';
-import { MIA_GOOGLE_STORAGE_PROVIDER } from '@agencycoda/mia-core';
+import { MIA_GOOGLE_STORAGE_PROVIDER, MIA_CORE_PROVIDER } from '@agencycoda/mia-core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +19,12 @@ import { AppComponent } from './app.component';
     MiaFinderModule
   ],
   providers: [
+    { 
+      provide: MIA_CORE_PROVIDER, 
+      useValue: {
+        baseUrl: 'http://localhost:8080/'
+      }
+    },
     { 
       provide: MIA_AUTH_PROVIDER, 
       useValue: {

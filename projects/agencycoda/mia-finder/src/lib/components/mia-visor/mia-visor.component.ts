@@ -20,7 +20,7 @@ export class MiaVisorComponent implements OnInit {
 	selectedItem!:MiaFinder;
 	selectedPosition = 0;
 	items!:Array<MiaFinder>;
-  viewer:Viewer;
+  	viewer!:Viewer;
 
 	constructor(
 		protected dialogRef: MatDialogRef<MiaVisorComponent>,
@@ -86,7 +86,7 @@ export class MiaVisorComponent implements OnInit {
     //   // this.onClickTheta360();
     // }else{
       this.viewer = new Viewer({
-        container: document.querySelector('#viewer'),
+        container: document.querySelector('#viewer') as HTMLElement,
         panorama: this.selectedItem.url
       });
     // }
