@@ -2,7 +2,9 @@
 import { GoogleStorageService, MiaPagination, MiaQuery } from '@agencycoda/mia-core';
 import { HttpEventType } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MiaFinder, MiaFinderHttpService, MiaFinderModalService, MiaFinderService, MiaFinderTableComponent, MiaFinderTableConfig, MiaFinderTag } from 'projects/agencycoda/mia-finder/src/public-api';
+import { MatDialog } from '@angular/material/dialog';
+import { MediaLibraryModalComponent, MiaFinder, MiaFinderHttpService, MiaFinderModalService, MiaFinderService, MiaFinderTableComponent, MiaFinderTableConfig, MiaFinderTag } from 'projects/agencycoda/mia-finder/src/public-api';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +24,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     protected finderHttpService: MiaFinderHttpService,
     protected finderModalService: MiaFinderModalService,
     protected miaFinderService: MiaFinderService,
-    protected storageService: GoogleStorageService
+    protected storageService: GoogleStorageService,
+    protected dialog: MatDialog
   ) {
 
   }
@@ -156,5 +159,12 @@ export class AppComponent implements OnInit, AfterViewInit {
     example2.size = 50000;
     let items = [example3, example4, example2, example, example3, example4, example2, example, example, example4];
     this.finderModalService.openVisor(items);
+  }
+
+  onClickOpenMediaLibraryModal(): Observable<any> {
+    return this.dialog.open(MediaLibraryModalComponent, {
+      width: '300px',
+      data: {  }
+    }).afterClosed();
   }
 }

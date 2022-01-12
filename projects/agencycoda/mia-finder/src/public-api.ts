@@ -18,6 +18,7 @@ export * from './lib/components/mia-finder-table/mia-finder-table.component';
 
 export * from './lib/modals/mia-move-file-modal/mia-move-file-modal.component';
 export * from './lib/components/mia-visor/mia-visor.component';
+export * from './lib/modals/media-library-modal/media-library-modal.component';
 
 /*
  * Services

@@ -15,6 +15,9 @@
 <input #inputFile2 type="file" (change)="onUploadCustomEvent($event)" style="display: none;" />
 <button (click)="inputFile2.click();">Upload file Custom</button>
 
+
+<button (click)="onClickOpenMediaLibraryModal()">Open Media Library Modal</button>
+
 <div>
     <p>Tags:</p>
     <p *ngFor="let tag of tags.data">{{ tag.title }}</p>

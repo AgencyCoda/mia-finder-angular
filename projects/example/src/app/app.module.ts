@@ -22,13 +22,15 @@ import { AppComponent } from './app.component';
     { 
       provide: MIA_CORE_PROVIDER, 
       useValue: {
-        baseUrl: 'http://localhost:8080/'
+        //baseUrl: 'http://localhost:8080/'
+        baseUrl: 'https://iron-radio-322514.uc.r.appspot.com/'
       }
     },
     { 
       provide: MIA_AUTH_PROVIDER, 
       useValue: {
-        baseUrl: 'http://localhost:8080/'
+        //baseUrl: 'http://localhost:8080/'
+        baseUrl: 'https://iron-radio-322514.uc.r.appspot.com/'
       }
     },
     {
