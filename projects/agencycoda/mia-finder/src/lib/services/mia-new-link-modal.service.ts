@@ -16,7 +16,7 @@ export class MiaNewLinkModalService {
   ) { }
 
   openModal(item: MiaFinder): Observable<any> {
-    item.type = MiaFinder.TYPE_FOLDER;
+    item.type = MiaFinder.TYPE_LINK;
 
     let data = new MiaFormModalConfig();
     data.item = item;
