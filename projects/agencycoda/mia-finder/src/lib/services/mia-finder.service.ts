@@ -12,6 +12,9 @@ export class MiaFinderService {
 
   uploading = new Subject<MiaFinder>();
   uploadCompleted = new Subject<MiaFinder>();
+  allUploadsCompleted = new Subject<boolean>();
+  filesCount = 0;
+
 
   constructor(
     @Inject(MIA_GOOGLE_STORAGE_PROVIDER) protected config: MiaGoogleStorage,
@@ -20,6 +23,7 @@ export class MiaFinderService {
   ) { }
 
   uploadFiles(files: Array<File>, parentId?: number, extra?: any) {
+    this.filesCount = files.length;
     for (let file of files) {
       this.upload(file, parentId, extra);
     }
@@ -56,6 +60,7 @@ export class MiaFinderService {
       } else if (data.type == HttpEventType.Response) {
         item.uploadMemory = undefined;
         item.url = 'https://storage.googleapis.com/' + this.config.bucket + '/' + escape(data.body.name);
+        item.uploadProgress = 100;
         this.save(item);
       }
     }, error => {
@@ -78,10 +83,13 @@ export class MiaFinderService {
     this.finderHttpService.save(finder).then(result => {
       finder.id = result.id;
       finder.uploadProgress = MiaFinder.UPLOAD_STATUS_SUCCESS;
+      this.filesCount--;
 
+      this.allUploadsCompleted.next( this.filesCount<= 0 );
       this.uploadCompleted.next(finder);
     }).catch(error => {
       finder.uploadStatus = MiaFinder.UPLOAD_STATUS_ERROR;
+      this.uploadCompleted.next(finder);
     });
   }
 }
