@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "": "^16.0.0",
+    "@agencycoda/mia-auth": "^16.0.0",
     "@agencycoda/mia-core": "^16.0.0",
     "@agencycoda/mia-form": "^16.0.0",
     "@agencycoda/mia-loading": "^16.0.0",
