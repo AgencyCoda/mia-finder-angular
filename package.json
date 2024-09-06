@@ -22,7 +22,7 @@
     "@angular/platform-browser": "^13.4.0",
     "@angular/platform-browser-dynamic": "^13.4.0",
     "@angular/router": "^13.4.0",
-    "@ngx-pwa/local-storage": "^12.1.0",
+    "@ngx-pwa/local-storage": "^13.0.6",
     "moment": "^2.29.1",
     "photo-sphere-viewer": "^4.2.1",
     "rxjs": "~6.6.0",
