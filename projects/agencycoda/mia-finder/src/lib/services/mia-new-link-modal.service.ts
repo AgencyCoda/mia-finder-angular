@@ -1,6 +1,6 @@
 import { MiaFormConfig, MiaFormModalComponent, MiaFormModalConfig } from '@agencycoda/mia-form';
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { Observable } from 'rxjs';
 import { MiaFinder } from '../entities/mia-finder';
 import { MiaFinderHttpService } from './mia-finder-http.service';
