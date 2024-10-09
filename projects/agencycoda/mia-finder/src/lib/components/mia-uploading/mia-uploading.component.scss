@@ -35,6 +35,7 @@ $box_shadow_12: 0 3px 10px -8px rgba($color: #393D63, $alpha: 0.04), 0 10px 23px
                 width: 100%;
                 .name { color: $black_high_emphasis; font-size: 14px; }
                 .size { font-size: 11px; color: $black_medium_emphasis; }
+                /* TODO(mdc-migration): The following rule targets internal classes of progress-bar that may no longer apply for the MDC version. */
                 &::ng-deep .mat-progress-bar-buffer { background-color: #DADEE3 !important; }
             }
 
@@ -60,10 +61,12 @@ $box_shadow_12: 0 3px 10px -8px rgba($color: #393D63, $alpha: 0.04), 0 10px 23px
         }
 
         .file-completed{
+            /* TODO(mdc-migration): The following rule targets internal classes of progress-bar that may no longer apply for the MDC version. */
             &::ng-deep .mat-progress-bar-fill { &::after { background-color: $color_accent !important; } }
         }
         .file-wrong{
             .progress { .name { color: $color_error; } }
+            /* TODO(mdc-migration): The following rule targets internal classes of progress-bar that may no longer apply for the MDC version. */
             &::ng-deep .mat-progress-bar-fill { &::after { background-color: $color_error !important; } }
         }
     }

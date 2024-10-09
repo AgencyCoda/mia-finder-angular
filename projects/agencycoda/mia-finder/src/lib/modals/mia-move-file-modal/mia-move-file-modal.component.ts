@@ -1,9 +1,9 @@
 import { MiaQuery } from '@agencycoda/mia-core';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { MiaFinder } from '../../entities/mia-finder';
 import { MiaFinderHttpService } from '../../services/mia-finder-http.service';
 import { MiaFinderService } from '../../services/mia-finder.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'lib-mia-move-file-modal',

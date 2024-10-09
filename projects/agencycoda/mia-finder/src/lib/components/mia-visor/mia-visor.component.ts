@@ -1,9 +1,9 @@
 import { StringHelper } from '@agencycoda/mia-core';
 import { Component, Inject, OnInit, Output } from '@angular/core';
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MiaFinder } from '../../entities/mia-finder';
 import { Viewer } from 'photo-sphere-viewer';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
 	selector: 'lib-mia-visor',
