@@ -30,9 +30,6 @@ export class MiaFolderModalService {
     config.fields = [
       { key: 'title', type: 'string', label: 'Title', },
     ];
-    config.errorMessages = [
-      { key: 'required', message: 'The "%label%" is required.' }
-    ];
 
     data.config = config;
 

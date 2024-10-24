@@ -28,9 +28,6 @@ export class MiaChangeNameModalService {
     config.fields = [
       { key: 'title', type: 'string', label: 'Name', },
     ];
-    config.errorMessages = [
-      { key: 'required', message: 'The "%label%" is required.' }
-    ];
 
     data.config = config;
 

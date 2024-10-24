@@ -31,9 +31,6 @@ export class MiaNewLinkModalService {
       { key: 'title', type: 'string', label: 'Title', },
       { key: 'url', type: 'string', label: 'URL', },
     ];
-    config.errorMessages = [
-      { key: 'required', message: 'The "%label%" is required.' }
-    ];
 
     data.config = config;
 
