@@ -77,7 +77,7 @@ export class MiaFinderService {
   save(finder: MiaFinder) {
     this.finderHttpService.save(finder).then(result => {
       finder.id = result.id;
-      finder.uploadProgress = MiaFinder.UPLOAD_STATUS_SUCCESS;
+      finder.uploadStatus = MiaFinder.UPLOAD_STATUS_SUCCESS;
 
       this.uploadCompleted.next(finder);
     }).catch(error => {
