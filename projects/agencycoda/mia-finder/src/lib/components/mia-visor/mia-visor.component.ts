@@ -1,5 +1,5 @@
 import { StringHelper } from '@agencycoda/mia-core';
-import { Component, Inject, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MiaFinder } from '../../entities/mia-finder';
 import { Viewer } from 'photo-sphere-viewer';
@@ -20,12 +20,15 @@ export class MiaVisorComponent implements OnInit {
 	selectedItem!:MiaFinder;
 	selectedPosition = 0;
 	items!:Array<MiaFinder>;
-  	viewer!:Viewer;
+  	viewer! : Viewer;
+
+	protected force360 = false;
 
 	constructor(
 		protected dialogRef: MatDialogRef<MiaVisorComponent>,
 		@Inject(MAT_DIALOG_DATA) public data : {items: Array<MiaFinder>; selectedId?: number},
-		protected sanitizer: DomSanitizer
+		protected sanitizer: DomSanitizer,
+		private hostElement:ElementRef,
 	) { }
 
 	ngOnInit(): void {
@@ -48,7 +51,7 @@ export class MiaVisorComponent implements OnInit {
 		this.selectedPosition++;
 		this.selectedItem = this.items[ this.selectedPosition ];
     this.destroyVisor();
-    if( this.isPossibleTheta() ) this.onClickTheta360();
+    if( this.isPossibleTheta() ) this.loadTheta360();
 	}
 
 	onClickPrevFile(event:MouseEvent)
@@ -57,7 +60,7 @@ export class MiaVisorComponent implements OnInit {
 		this.selectedPosition--;
 		this.selectedItem = this.items[ this.selectedPosition ];
     this.destroyVisor();
-    if( this.isPossibleTheta() ) this.onClickTheta360();
+    if( this.isPossibleTheta() ) this.loadTheta360();
 	}
 
   destroyVisor()
@@ -70,32 +73,30 @@ export class MiaVisorComponent implements OnInit {
     }
   }
 
-	onClickTheta360()
-  {
-		setTimeout(() => {
+	protected toggle360() {
+		this.force360 = !this.force360;
+
+		if (this.force360)
 			this.loadTheta360();
-		}, 1000);
-		// this.isTheta = true;
 	}
 
-	loadTheta360() {
-    // if( this.viewer )
-    // {
-    //   // this.viewer.destroy();
-    //   this.viewer.setPsanorama( this.selectedItem.url );
-    //   // this.onClickTheta360();
-    // }else{
-
-      this.viewer = new Viewer({
-        container: document.querySelector('#viewer') as HTMLElement,
-        panorama: this.selectedItem.url
-      });
-    // }
+	private loadTheta360() {
+		setTimeout(() => {
+			if (this.viewer)
+				this.viewer.destroy();
+  
+			this.viewer = new Viewer({
+				container: document.querySelector('#viewer') as HTMLElement,
+				panorama: this.selectedItem.url
+			});
+		});
 	}
 
-	isPossibleTheta() {
+	protected isPossibleTheta() {
 		let extension = StringHelper.getExtension(this.selectedItem.title);
-		return (extension == 'jpg' || extension == 'jpeg') && this.selectedItem.size > 4000 && this.selectedItem.title.charAt(0) == 'R';
+		return (extension == 'jpg' || extension == 'jpeg') &&
+			this.selectedItem.size > 4000 &&
+			this.selectedItem.title.charAt(0) == 'R';
 	}
 
 	getUrlSanitizer() {
@@ -129,7 +130,17 @@ export class MiaVisorComponent implements OnInit {
 		}else{
 			this.selectedItem = this.items[0];
 		}
-    if( this.isPossibleTheta() ) this.onClickTheta360();
+
+		setTimeout(() => {
+			this.setIframe();
+		});
+    	if( this.isPossibleTheta() ) this.loadTheta360();
 	}
 
+	setIframe() {
+		if (this.isPDF()) {
+			const iframe = this.hostElement.nativeElement.querySelector('iframe');
+ 			iframe.src = this.selectedItem.url;
+		}
+	}
 }

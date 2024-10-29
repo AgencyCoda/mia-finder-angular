@@ -42,15 +42,8 @@ export class MiaFinderModalService {
 
   openVisor(items: Array<MiaFinder>, selectedId?:number): Observable<boolean> {
     return this.dialog.open(MiaVisorComponent, {
-      data: {items: items, selectedId: selectedId}
+      data: { items: items, selectedId: selectedId },
+      panelClass: ["mia-visor-dialog"],
     }).afterClosed();
   }
-
-  // openVisorMulti(item: MiaFinder): Observable<any> {
-  //   let dialogRef = this.dialog.open(MiaVisorComponent, {
-  //     data: item
-  //   });
-
-  //   return dialogRef.componentInstance.clickItem;
-  // }
 }
