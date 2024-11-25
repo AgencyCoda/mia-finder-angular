@@ -36,16 +36,14 @@ export class MiaUploadingComponent implements OnInit {
   }
 
   hideFile(file: MiaFinder) {
-    let index = this.files.indexOf(file);
-    if(index > -1){
-      setTimeout(() => {
-        this.files.splice(index, 1);
+    setTimeout(() => {
+      let index = this.files.indexOf(file);
+      this.files.splice(index, 1);
 
-        if(this.files.length == 0){
-          this.isActive = false;
-        }
-      }, 5000);
-    }
+      if(this.files.length == 0){
+        this.isActive = false;
+      }
+    }, 5000);
   }
 
   loadConfig() {
