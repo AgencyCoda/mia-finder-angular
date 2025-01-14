@@ -1,5 +1,5 @@
-import { MiaAuthConfig, MIA_AUTH_PROVIDER } from '@agencycoda/mia-auth';
-import { MiaBaseCrudHttpService, MiaPagination, MiaQuery } from '@agencycoda/mia-core';
+import { MiaAuthConfig, MIA_AUTH_PROVIDER } from '@agencycoda/mia-auth-jv';
+import { MiaBaseCrudHttpService, MiaPagination, MiaQuery } from '@agencycoda/mia-core-jv';
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';

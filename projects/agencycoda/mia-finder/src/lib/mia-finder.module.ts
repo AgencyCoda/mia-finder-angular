@@ -12,11 +12,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 /** MIA Libraries */
-import { MiaCoreModule } from '@agencycoda/mia-core';
-import { MiaFormModule } from '@agencycoda/mia-form';
+import { MiaCoreModule } from '@agencycoda/mia-core-jv';
+import { MiaFormModule } from '@agencycoda/mia-form-jv';
 import { MiaLoadingModule } from '@agencycoda/mia-loading';
-import { MiaAuthModule } from '@agencycoda/mia-auth';
-import { MiaTableModule } from '@agencycoda/mia-table';
+import { MiaAuthModule } from '@agencycoda/mia-auth-jv';
+import { MiaTableModule } from '@agencycoda/mia-table-jv';
 
 /** Components */
 import { MiaFinderComponent } from './mia-finder.component';

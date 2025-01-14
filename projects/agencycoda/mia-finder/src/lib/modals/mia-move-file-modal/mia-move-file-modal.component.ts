@@ -1,4 +1,4 @@
-import { MiaQuery } from '@agencycoda/mia-core';
+import { MiaQuery } from '@agencycoda/mia-core-jv';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MiaFinder } from '../../entities/mia-finder';
 import { MiaFinderHttpService } from '../../services/mia-finder-http.service';

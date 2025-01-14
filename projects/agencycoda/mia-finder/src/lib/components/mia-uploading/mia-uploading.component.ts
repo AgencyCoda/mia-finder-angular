@@ -1,4 +1,4 @@
-import { BytesHelper, StringHelper } from '@agencycoda/mia-core';
+import { BytesHelper, StringHelper } from '@agencycoda/mia-core-jv';
 import { Component, OnInit } from '@angular/core';
 import { MiaFinder } from '../../entities/mia-finder';
 import { MiaFinderService } from '../../services/mia-finder.service';

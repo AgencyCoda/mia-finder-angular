@@ -1,5 +1,5 @@
-import { MIA_AUTH_PROVIDER } from '@agencycoda/mia-auth';
-import { MIA_GOOGLE_STORAGE_PROVIDER } from '@agencycoda/mia-core';
+import { MIA_AUTH_PROVIDER } from '@agencycoda/mia-auth-jv';
+import { MIA_GOOGLE_STORAGE_PROVIDER } from '@agencycoda/mia-core-jv';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

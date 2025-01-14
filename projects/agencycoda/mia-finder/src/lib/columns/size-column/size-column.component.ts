@@ -1,5 +1,5 @@
-import { BytesHelper } from '@agencycoda/mia-core';
-import { BaseColumnComponent } from '@agencycoda/mia-table';
+import { BytesHelper } from '@agencycoda/mia-core-jv';
+import { BaseColumnComponent } from '@agencycoda/mia-table-jv';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

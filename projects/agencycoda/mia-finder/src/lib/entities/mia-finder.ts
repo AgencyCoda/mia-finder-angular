@@ -1,4 +1,4 @@
-import { MiaModel } from "@agencycoda/mia-core";
+import { MiaModel } from "@agencycoda/mia-core-jv";
 
 export class MiaFinder extends MiaModel {
     static TYPE_FILE = 0;

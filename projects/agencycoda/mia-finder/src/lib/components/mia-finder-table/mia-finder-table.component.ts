@@ -1,4 +1,4 @@
-import { MiaColumn, MiaTableComponent, MiaTableConfig } from '@agencycoda/mia-table';
+import { MiaColumn, MiaTableComponent, MiaTableConfig } from '@agencycoda/mia-table-jv';
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { FileColumnComponent } from '../../columns/file-column/file-column.component';

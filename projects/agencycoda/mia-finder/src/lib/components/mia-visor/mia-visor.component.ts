@@ -1,4 +1,4 @@
-import { StringHelper } from '@agencycoda/mia-core';
+import { StringHelper } from '@agencycoda/mia-core-jv';
 import { Component, ElementRef, Inject, OnInit, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MiaFinder } from '../../entities/mia-finder';

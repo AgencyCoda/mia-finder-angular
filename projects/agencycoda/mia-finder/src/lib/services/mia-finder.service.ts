@@ -1,4 +1,4 @@
-import { GoogleStorageService, MiaGoogleStorage, MIA_GOOGLE_STORAGE_PROVIDER } from '@agencycoda/mia-core';
+import { GoogleStorageService, MiaGoogleStorage, MIA_GOOGLE_STORAGE_PROVIDER } from '@agencycoda/mia-core-jv';
 import { HttpEventType } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Subject } from 'rxjs';

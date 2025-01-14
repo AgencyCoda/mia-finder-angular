@@ -1,5 +1,5 @@
 
-import { GoogleStorageService, MiaPagination, MiaQuery } from '@agencycoda/mia-core';
+import { GoogleStorageService, MiaPagination, MiaQuery } from '@agencycoda/mia-core-jv';
 import { HttpEventType } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MiaFinder, MiaFinderHttpService, MiaFinderModalService, MiaFinderService, MiaFinderTableComponent, MiaFinderTableConfig, MiaFinderTag } from 'projects/agencycoda/mia-finder/src/public-api';

@@ -1,13 +1,13 @@
 {
-  "name": "@agencycoda/mia-finder",
+  "name": "@agencycoda/mia-finder-jv",
   "version": "16.0.0",
   "peerDependencies": {
     "@angular/common": "^16.2.12",
     "@angular/core": "^16.2.12",
-    "@agencycoda/mia-core": "^16.0.0",
-    "@agencycoda/mia-auth": "^16.0.0",
-    "@agencycoda/mia-form": "^16.0.0",
-    "@agencycoda/mia-table": "^16.0.0",
+    "@agencycoda/mia-core-jv": "^16.0.0",
+    "@agencycoda/mia-auth-jv": "^16.0.0",
+    "@agencycoda/mia-form-jv": "^16.0.0",
+    "@agencycoda/mia-table-jv": "^16.0.0",
     "@agencycoda/mia-loading": "^16.0.0",
     "photo-sphere-viewer": ">=4.2.1"
   },
