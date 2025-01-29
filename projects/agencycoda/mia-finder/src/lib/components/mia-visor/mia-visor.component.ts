@@ -50,7 +50,6 @@ export class MiaVisorComponent implements OnInit {
     event.stopPropagation();
 		this.selectedPosition++;
 		this.selectedItem = this.items[ this.selectedPosition ];
-    this.destroyVisor();
     if( this.isPossibleTheta() ) this.loadTheta360();
 	}
 
@@ -59,19 +58,8 @@ export class MiaVisorComponent implements OnInit {
     event.stopPropagation();
 		this.selectedPosition--;
 		this.selectedItem = this.items[ this.selectedPosition ];
-    this.destroyVisor();
     if( this.isPossibleTheta() ) this.loadTheta360();
 	}
-
-  destroyVisor()
-  {
-    if( this.viewer && this.viewer != null )
-    {
-      setTimeout(() => {
-        this.viewer.destroy();
-      }, 1000);
-    }
-  }
 
 	protected toggle360() {
 		this.force360 = !this.force360;
@@ -82,9 +70,10 @@ export class MiaVisorComponent implements OnInit {
 
 	private loadTheta360() {
 		setTimeout(() => {
-			if (this.viewer)
-				this.viewer.destroy();
-  
+			if (this.viewer) {
+        this.viewer.destroy();
+      }
+
 			this.viewer = new Viewer({
 				container: document.querySelector('#viewer') as HTMLElement,
 				panorama: this.selectedItem.url
@@ -94,7 +83,7 @@ export class MiaVisorComponent implements OnInit {
 
 	protected isPossibleTheta() {
 		let extension = StringHelper.getExtension(this.selectedItem.title);
-		return (extension == 'jpg' || extension == 'jpeg') &&
+		return (extension == 'jpg' || extension == 'jpeg') &&
 			this.selectedItem.size > 4000 &&
 			this.selectedItem.title.charAt(0) == 'R';
 	}
