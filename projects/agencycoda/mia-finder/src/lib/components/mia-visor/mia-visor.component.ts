@@ -24,8 +24,6 @@ export class MiaVisorComponent implements OnInit {
 
 	protected force360 = false;
 
-	@ViewChild("pdfIframe") pdfIframe? : ElementRef<HTMLIFrameElement>;
-
 	constructor(
 		protected dialogRef: MatDialogRef<MiaVisorComponent>,
 		@Inject(MAT_DIALOG_DATA) public data : {items: Array<MiaFinder>; selectedId?: number},
