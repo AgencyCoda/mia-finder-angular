@@ -1,5 +1,5 @@
 import { StringHelper } from '@agencycoda/mia-core-jv';
-import { Component, ElementRef, Inject, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, Output, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MiaFinder } from '../../entities/mia-finder';
 import { Viewer } from 'photo-sphere-viewer';
@@ -24,6 +24,8 @@ export class MiaVisorComponent implements OnInit {
 
 	protected force360 = false;
 
+	@ViewChild("pdfIframe") pdfIframe? : ElementRef<HTMLIFrameElement>;
+
 	constructor(
 		protected dialogRef: MatDialogRef<MiaVisorComponent>,
 		@Inject(MAT_DIALOG_DATA) public data : {items: Array<MiaFinder>; selectedId?: number},
@@ -47,20 +49,28 @@ export class MiaVisorComponent implements OnInit {
 
 	onClickNextFile(event:MouseEvent)
 	{
-    event.stopPropagation();
+    		event.stopPropagation();
 		this.selectedPosition++;
 		this.selectedItem = this.items[ this.selectedPosition ];
-    this.destroyVisor();
-    if( this.isPossibleTheta() ) this.loadTheta360();
+    		this.destroyVisor();
+    		if( this.isPossibleTheta() ) this.loadTheta360();
+
+		if (this.isPDF()) {
+			this.setIframe();
+		}
 	}
 
 	onClickPrevFile(event:MouseEvent)
 	{
-    event.stopPropagation();
+    		event.stopPropagation();
 		this.selectedPosition--;
 		this.selectedItem = this.items[ this.selectedPosition ];
-    this.destroyVisor();
-    if( this.isPossibleTheta() ) this.loadTheta360();
+    		this.destroyVisor();
+    		if( this.isPossibleTheta() ) this.loadTheta360();
+
+		if (this.isPDF()) {
+			this.setIframe();
+		}
 	}
 
   destroyVisor()
@@ -133,15 +143,15 @@ export class MiaVisorComponent implements OnInit {
 		}
 
 		setTimeout(() => {
-			this.setIframe();
+			if (this.isPDF()) {
+				this.setIframe();
+			}
 		});
     	if( this.isPossibleTheta() ) this.loadTheta360();
 	}
 
 	setIframe() {
-		if (this.isPDF()) {
-			const iframe = this.hostElement.nativeElement.querySelector('iframe');
- 			iframe.src = this.selectedItem.url;
-		}
+		const iframe = this.hostElement.nativeElement.querySelector('iframe');
+		iframe.src = this.selectedItem.url;
 	}
 }
