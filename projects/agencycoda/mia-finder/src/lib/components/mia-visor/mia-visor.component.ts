@@ -45,23 +45,18 @@ export class MiaVisorComponent implements OnInit {
 		window.open(this.selectedItem.url);
 	}
 
-	onClickNextFile(event:MouseEvent)
-	{
+	onClickNextFile(event:MouseEvent) {
     		event.stopPropagation();
 		this.selectedPosition++;
-		this.selectedItem = this.items[ this.selectedPosition ];
-    		this.destroyVisor();
-    		if( this.isPossibleTheta() ) this.loadTheta360();
-
-		if (this.isPDF()) {
-			this.setIframe();
-		}
+		this.switchFile
 	}
 
-	onClickPrevFile(event:MouseEvent)
-	{
+	onClickPrevFile(event:MouseEvent) {
     		event.stopPropagation();
 		this.selectedPosition--;
+		this.switchFile();
+	}
+	switchFile() {
 		this.selectedItem = this.items[ this.selectedPosition ];
     		this.destroyVisor();
     		if( this.isPossibleTheta() ) this.loadTheta360();
@@ -149,7 +144,9 @@ export class MiaVisorComponent implements OnInit {
 	}
 
 	setIframe() {
-		const iframe = this.hostElement.nativeElement.querySelector('iframe');
-		iframe.src = this.selectedItem.url;
+		setTimeout(() => {
+			const iframe = this.hostElement.nativeElement.querySelector('iframe');
+			iframe.src = this.selectedItem.url;	
+		});
 	}
 }
