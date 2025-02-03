@@ -144,9 +144,7 @@ export class MiaVisorComponent implements OnInit {
 	}
 
 	setIframe() {
-		setTimeout(() => {
-			const iframe = this.hostElement.nativeElement.querySelector('iframe');
-			iframe.src = this.getUrlSanitizer();
-		}, 1000);
+		const iframe = this.hostElement.nativeElement.querySelector('iframe');
+		iframe.src = this.getUrlSanitizer();
 	}
 }
