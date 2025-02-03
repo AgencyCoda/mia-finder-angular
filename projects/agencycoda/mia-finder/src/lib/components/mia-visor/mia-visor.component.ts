@@ -22,6 +22,8 @@ export class MiaVisorComponent implements OnInit {
 	items!:Array<MiaFinder>;
   	viewer! : Viewer;
 
+	@ViewChild("pdfIframe") pdfIframe? : ElementRef<HTMLIFrameElement>;
+
 	protected force360 = false;
 
 	constructor(
@@ -144,7 +146,8 @@ export class MiaVisorComponent implements OnInit {
 	}
 
 	setIframe() {
-		const iframe = this.hostElement.nativeElement.querySelector('iframe');
-		iframe.src = this.getUrlSanitizer();
+		if (this.pdfIframe) {
+			this.pdfIframe.nativeElement.src = this.selectedItem.url;
+		}
 	}
 }
