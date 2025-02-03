@@ -146,8 +146,10 @@ export class MiaVisorComponent implements OnInit {
 	}
 
 	setIframe() {
-		if (this.pdfIframe) {
-			this.pdfIframe.nativeElement.src = this.selectedItem.url;
-		}
+		setTimeout(() => {
+			if (this.pdfIframe) {
+				this.pdfIframe.nativeElement.src = this.selectedItem.url;
+			}	
+		});
 	}
 }
