@@ -61,9 +61,9 @@ export class MiaVisorComponent implements OnInit {
     		this.destroyVisor();
     		if( this.isPossibleTheta() ) this.loadTheta360();
 
-		if (this.isPDF()) {
-			this.setIframe();
-		}
+		//if (this.isPDF()) {
+		//	this.setIframe();
+		//}
 	}
 
   destroyVisor()
