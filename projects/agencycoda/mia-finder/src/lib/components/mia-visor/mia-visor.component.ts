@@ -50,7 +50,7 @@ export class MiaVisorComponent implements OnInit {
 	onClickNextFile(event:MouseEvent) {
     		event.stopPropagation();
 		this.selectedPosition++;
-		this.switchFile
+		this.switchFile()
 	}
 
 	onClickPrevFile(event:MouseEvent) {

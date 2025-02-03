@@ -6,9 +6,7 @@
 		<div class="name">
 			<div class="icon icon-image"></div>
 			{{ selectedItem.title }}
-			- 22
-			<span>{{ isPDF() | json }}</span>
-			<span>{{ isPossibleTheta() | json }}</span>
+			- 23
 		</div>
 
 		<button *ngIf="isImage() && !isPossibleTheta()" mat-icon-button (click)="toggle360()">
