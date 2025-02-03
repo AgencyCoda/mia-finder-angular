@@ -61,9 +61,11 @@ export class MiaVisorComponent implements OnInit {
     		this.destroyVisor();
     		if( this.isPossibleTheta() ) this.loadTheta360();
 
+		/*
 		if (this.isPDF()) {
 			this.setIframe();
 		}
+		*/
 	}
 
   destroyVisor()
@@ -144,9 +146,7 @@ export class MiaVisorComponent implements OnInit {
 	}
 
 	setIframe() {
-		setTimeout(() => {
-			const iframe = this.hostElement.nativeElement.querySelector('iframe');
-			iframe.src = this.selectedItem.url;	
-		});
+		const iframe = this.hostElement.nativeElement.querySelector('iframe');
+		iframe.src = this.selectedItem.url;	
 	}
 }
