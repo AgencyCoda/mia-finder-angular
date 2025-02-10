@@ -27,7 +27,7 @@
 		</div>
 
 		<div *ngIf="isPDF() && !isPossibleTheta()" class="container-iframe">
-			<iframe src=""></iframe>
+			<iframe src="" #pdfIframe></iframe>
 		</div>
 
 		<div *ngIf="isPossibleTheta() || force360" class="container-theta">

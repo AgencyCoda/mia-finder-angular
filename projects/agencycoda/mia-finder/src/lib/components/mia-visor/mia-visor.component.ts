@@ -1,5 +1,5 @@
 import { StringHelper } from '@agencycoda/mia-core-jv';
-import { Component, ElementRef, Inject, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, Output, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MiaFinder } from '../../entities/mia-finder';
 import { Viewer } from 'photo-sphere-viewer';
@@ -21,6 +21,8 @@ export class MiaVisorComponent implements OnInit {
 	selectedPosition = 0;
 	items!:Array<MiaFinder>;
   	viewer! : Viewer;
+
+	@ViewChild("pdfIframe") pdfIframe? : ElementRef<HTMLIFrameElement>;
 
 	protected force360 = false;
 
@@ -45,22 +47,25 @@ export class MiaVisorComponent implements OnInit {
 		window.open(this.selectedItem.url);
 	}
 
-	onClickNextFile(event:MouseEvent)
-	{
-    event.stopPropagation();
+	onClickNextFile(event:MouseEvent) {
+    		event.stopPropagation();
 		this.selectedPosition++;
-		this.selectedItem = this.items[ this.selectedPosition ];
-    this.destroyVisor();
-    if( this.isPossibleTheta() ) this.loadTheta360();
+		this.switchFile()
 	}
 
-	onClickPrevFile(event:MouseEvent)
-	{
-    event.stopPropagation();
+	onClickPrevFile(event:MouseEvent) {
+    		event.stopPropagation();
 		this.selectedPosition--;
+		this.switchFile();
+	}
+	switchFile() {
 		this.selectedItem = this.items[ this.selectedPosition ];
-    this.destroyVisor();
-    if( this.isPossibleTheta() ) this.loadTheta360();
+    		this.destroyVisor();
+    		if( this.isPossibleTheta() ) this.loadTheta360();
+
+		if (this.isPDF()) {
+			this.setIframe();
+		}
 	}
 
   destroyVisor()
@@ -133,15 +138,18 @@ export class MiaVisorComponent implements OnInit {
 		}
 
 		setTimeout(() => {
-			this.setIframe();
+			if (this.isPDF()) {
+				this.setIframe();
+			}
 		});
     	if( this.isPossibleTheta() ) this.loadTheta360();
 	}
 
 	setIframe() {
-		if (this.isPDF()) {
-			const iframe = this.hostElement.nativeElement.querySelector('iframe');
- 			iframe.src = this.selectedItem.url;
-		}
+		setTimeout(() => {
+			if (this.pdfIframe) {
+				this.pdfIframe.nativeElement.src = this.selectedItem.url;
+			}	
+		});
 	}
 }
