@@ -22,9 +22,14 @@
             font-size: 13px;
             letter-spacing: 0;
             mat-icon { margin-left: auto; opacity: 0; }
-            &:hover { mat-icon { opacity: 1; } }       
+            &:hover { mat-icon { opacity: 1; } }
         }
     }
+
+  ::ng-deep .mat-mdc-list-item-unscoped-content {
+    display: flex !important;
+    align-items: center !important;
+  }
 }
 
 
